@@ -17,7 +17,7 @@ unsigned long abc = 0;
 
 void *Test03(void *p)
 {
-    printf("Cancel point");
+    printf("Cancel point\n");
     return NULL;
 }
 
