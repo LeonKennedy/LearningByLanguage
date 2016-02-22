@@ -36,7 +36,7 @@ void *Test02(void *ptr)
 {
     while(1){
         sleep(2);
-        printf("222cond_wait:abc =0x%08x\n",abc); 
+        printf("cond_wait:abc =%u\n",abc); 
     }
     return NULL;
 }
