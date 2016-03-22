@@ -1,3 +1,4 @@
+import Data.List
 --模式匹配
 lucky ::(Integral a) => a -> String
 lucky 7 = "LUCKY NUMBER SERVER"
@@ -146,5 +147,11 @@ numLongChains' = length ( filter (\xz -> length xz > 15)(map chain [1..100]))
 flip' :: (a->b -> c)->b->a -> c
 flip' f = \x y ->f y x
 
+--ghci> map (negate . abs) [5,-3,-6,7,-3,2,-19,24]
+--[-5,-3,-6,-7,-3,-2,-19,-24]
 
+--ghci> map (negate . abs) [5,-3,-6,7,-3,2,-19,24]
+--[-5,-3,-6,-7,-3,-2,-19,-24]
 
+numUniques :: (Eq a)=>[a] -> Int
+numUniques = length . nub
