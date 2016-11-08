@@ -17,7 +17,7 @@ class JSONDataManager:
             return
         else:
             print "connect..."
-            self.conn = MySQLdb.connect(host='56f214b4408fa.gz.cdb.myqcloud.com',user='cdb_outerroot',passwd='quchu2015',db='quchu',port=12020)
+            self.conn = MySQLdb.connect(host='56f214b4408fa.gz.cdb.myqcloud.com',user='cdb_outerroot',passwd='quchu2015',db='quchu',port=12020, charset='utf8')
             self.localconn = MySQLdb.connect(host='localhost',user='root',passwd='',db='wechatspider',port=3306,charset="utf8")
             print "create cursor..."
             self.cur = self.conn.cursor()
