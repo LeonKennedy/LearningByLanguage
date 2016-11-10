@@ -42,6 +42,21 @@ class JSONDataManager:
             print "close local connection..."
             self.localconn.close()
 
+    #每次默认取1000条来输出
+    #怕内容过大 内存不够
+    def getRecord(self, sql, num = 1000):
+        offset = 0
+        length = num
+        while length == num:
+            limitsql = sql + " limit %d,%d" % (offset,num)
+            print limitsql
+            self.cur.execute(limitsql)
+            results = self.cur.fetchall()
+            length = len(results)
+            for res in results:
+                yield res
+            offset += length
+
     def exe(self):
         querysql = "select id,name from place"
         self.cur.execute(querysql)
