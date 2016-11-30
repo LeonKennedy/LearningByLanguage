@@ -26,10 +26,6 @@ class ExcelProcess(object):
     conn = None
     cur = None
     files = []
-    def __init__(self, name):
-        if not self.checkInput(name):
-            raise NameError("InputError")
-
 
     #检查是文件还是文件夹，取出.xlsx文件
     def checkInput(self, name):
@@ -48,6 +44,7 @@ class ExcelProcess(object):
                         self.files.append(os.path.join(dirname, filename))
             return True
         else:
+            raise NameError("InputError")
             return False
 
 
@@ -66,7 +63,6 @@ class ExcelProcess(object):
         from openpyxl.utils import get_column_letter
         
         wb = Workbook()
-        
         dest_filename = 'empty_book.xlsx'
         
         ws1 = wb.active
@@ -96,7 +92,9 @@ if __name__ == '__main__':
     #文件
     #这里需要有文件输入 才能使用
     dirname = 'placedata'
-    a = ExcelProcess(dirname)
+    a = ExcelProcess()
+    #a.checkinput(dirname)
+
 #    a.one()
     a.record('a')
     #a.getRecords(os.path.join(dirname,'1.xlsx'))

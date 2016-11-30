@@ -11,6 +11,12 @@ class JSONDataManager:
 
     conn = None
     cur = None
+    def __init__(self):
+        self.initConn()
+
+    def __del__(self):
+        self.closeConn()
+
     def initConn(self):
         if self.conn :
             print "连接存在"
@@ -23,8 +29,6 @@ class JSONDataManager:
             self.cur = self.conn.cursor()
             self.localcur = self.localconn.cursor()
 
-    def __del__(self):
-        self.closeConn()
 
     def closeConn(self):
         if self.cur:
