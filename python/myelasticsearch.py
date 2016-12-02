@@ -116,6 +116,8 @@ class ESProcess(object):
         print req.content
         
 
+    # ---------搜索-----------
+    #  全搜索
     def matchall(self, index, doc_type = None):
         url = self.baseurl + "/%s/_search" % (index)
         body = {
@@ -124,6 +126,20 @@ class ESProcess(object):
         req = requests.get(url, data=json.dumps(body))
         print req.content
         return req
+
+    # 全搜索通过key
+    def matchall_by_key(self, key):
+        url = self.baseurl + "/_search"
+        body = {
+            "query" : { "match" : {
+                "_all" : key     
+             }}
+
+        }
+        req = requests.get(url, data=json.dumps(body))
+        print req.content
+        return req
+
     # 查看指定内容 
     def get(self,id):
         url = self.baseurl + "/%s/%s/%s" % (self.doc_index, self.doc_type, str(id))
@@ -144,7 +160,7 @@ class ESProcess(object):
     def base_search(self, doc_index, doc_type, body):
         url = self.baseurl + "/%s/%s/_search?pretty" % (doc_index, doc_type)
         req = requests.get(url, data = json.dumps(body))
-	print req.content
+	    print req.content
         return req
 
     def wechat_search(self, key):
@@ -185,7 +201,11 @@ class ESProcess(object):
 	}
 	self.base_search("scrapingdb", "sjs_xiancheng", body)
 
-    #分析
+    #-------------配置-------------------
+    def config_index(self):
+    url = self.baseurl + '/' + 
+
+    #------------分析 -------- 
     def analyzer(self, words):
         url =  self.baseurl + '/_analyze'
         params = {'analyzer': 'ik_max_word', 'pretty' : True , 'text' : words}
