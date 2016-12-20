@@ -12,5 +12,6 @@
  - identification.py    验证码识别接口
  - BaseElasticsearch.py   elasticsearch封装例子
  - myimage.py          Image模块的使用例子
+ - decorator.py          装饰器使用例子
 + VIM
  - vimrc         配置文件
