@@ -23,28 +23,19 @@ class JSONDataManager:
             return
         else:
             print "connect..."
-            self.conn = MySQLdb.connect(host='56f214b4408fa.gz.cdb.myqcloud.com',user='cdb_outerroot',passwd='quchu2015',db='quchu',port=12020, charset='utf8')
-            self.localconn = MySQLdb.connect(host='localhost',user='root',passwd='',db='wechatspider',port=3306,charset="utf8")
+            self.conn = MySQLdb.connect(host='56c1952d3edfa.gz.cdb.myqcloud.com',user='cdb_outerroot',passwd='quchu2015',db='scrapingdb',port=8426, charset='utf8')
             print "create cursor..."
             self.cur = self.conn.cursor()
-            self.localcur = self.localconn.cursor()
 
 
     def closeConn(self):
         if self.cur:
             print "close cursor..."
             self.cur.close()
-        if self.localcur:
-            print "close local cursor..."
-            self.localcur.close()
         if self.conn:
             self.conn.commit()
             print "close connection..."
             self.conn.close()
-        if self.localconn:
-            self.localconn.commit()
-            print "close local connection..."
-            self.localconn.close()
 
     #每次默认取1000条来输出
     #怕内容过大 内存不够
@@ -127,4 +118,8 @@ if __name__ == '__main__':
     b = JSONDataManager()
     b.initConn()
   #  b.olenji()
-    b.exe()
+    #b.cur.execute("select product_id,latitude,longitude from sjs_yhouse where product_id in (18872,18934,18940,18943,18987,19003)")
+    #print b.cur.fetchall()
+    b.cur.execute("select product_id,latitude,longitude from sjs_yhouse where latitude = 0")
+    print b.cur.fetchall()
+    b.closeConn()

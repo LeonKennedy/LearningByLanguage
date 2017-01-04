@@ -8,8 +8,8 @@
  py_version ：2.7.2
 '''
 
-import urllib2
-import time, json
+import urllib2,urllib
+import time, json, base64
 
 def main(raw_img):
  
@@ -75,6 +75,36 @@ def imgfromfile():
     raw_data = fr.read()
     fr.close()
     return  main(raw_data)
+
+
+class ShowAPI(object):
+
+    def main(self, imgb64):
+        print('send data....')
+        showapi_appid="29420"  #替换此值
+        showapi_sign="2fde3f3dc70b451a845bcc14a148e3a5"   #替换此值
+        url="http://route.showapi.com/184-2"
+        data = {}
+        data['showapi_appid'] = "29420"
+        data['showapi_sign'] = "2fde3f3dc70b451a845bcc14a148e3a5"
+        data['img_base64'] = imgb64
+        data['typeId'] = "3060"
+        send_data = urllib.urlencode(data)
+
+        req = urllib2.Request(url) 
+        try:
+            f = urllib2.urlopen(req, data=send_data.encode('utf-8'))
+            str_res= f.read().decode('utf-8')
+            print(str_res)
+            json_res=json.loads(str_res)
+            return json_res['showapi_res_body']['Result']
+        except Exception, e:
+            print e.args
+
 if __name__ == "__main__":
-    url = 'http://mp.weixin.qq.com/mp/verifycode?cert=1481523753475.1445'
-    imgfromurl(url)
+    from PIL import Image
+    i =open("/tmp/tmpqcode.png")
+    sa = ShowAPI()
+    sa.main(base64.b64encode(i.read()))
+    i.close()
+    

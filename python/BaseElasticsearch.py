@@ -23,6 +23,8 @@ class BaseElasticsearch(object):
     def setIndex(self,index):
         self.doc_index = index
 
+
+    #=============创 建==============
     #Index作用
     def index(self, body, doc_id = None, doc_type = None, doc_index=None):
         if not doc_index:
@@ -62,11 +64,47 @@ class BaseElasticsearch(object):
         print(rep.content)
         return rep
 
+    #创建Index的别名alias
+    def createAlias(self, index, alias):
+        url = self.baseurl + "/_aliases"
+        body = {
+            "actions":[
+                { "add" : { "index" : index, "alias" : alias } } 
+            ]
+        }
+        rep = requests.post(url, data = json.dumps(body))
+        print rep.content
+        return rep
+
+    def deleteAlias(self, index, alias):
+        url = self.baseurl + "/_aliases"
+        body = {
+            "actions":[
+                { "remove" : { "index" : index, "alias" : alias } } 
+            ]
+        }
+        rep = requests.post(url, data = json.dumps(body))
+        print rep.content
+        return rep
+
+
+   #-----------------删除-----------
     #删除节点
     def deleteIndex(self, index):
         rep = self.es.indices.delete(index=index)
         print rep
         return rep['acknowledged']
+
+   #删除 type
+    def deleteType(self, index, doc_type):
+        url = self.baseurl + "/%s/%s/_delete_by_query?pretty" % (index, doc_type)
+        body = {
+            "query":{"match_all": {}}
+        }
+        req = requests.post(url, data=json.dumps(body))
+        print req.content
+        return req
+
 
     #存在并删除返回200   不存在返回404
     def delete(self, doc_index, doc_type, doc_id):
@@ -116,35 +154,63 @@ class BaseElasticsearch(object):
     def catIndices(self):
         req = requests.get(self.baseurl + "/_cat/indices?v")
         print req.content
+
+    # 查看结构mapping
+    def mapping(self, index, doc_type):
+        if doc_type:
+            url = self.baseurl + "/%s/_mapping/%s?pretty" % (index, doc_type)
+        else:
+            url = self.baseurl + "/%s/_mapping?pretty" % (index)
+        req = requests.get(url)
+        print req.content
+        return req
+        
         
 
     def matchall(self, index, doc_type = None):
-        url = self.baseurl + "/%s/_search" % (index)
+        if doc_type:
+            url = self.baseurl + "/%s/%s/_search?pretty" % (index, doc_type)
+        else:
+            url = self.baseurl + "/%s/_search?pretty" % (index)
         body = {
-            "query":{"match_all": {}}
+            "query":{"match_all": {}},
+            "size" : 1
         }
         req = requests.get(url, data=json.dumps(body))
         print req.content
         return req
+
     # 查看指定内容 
     def get(self,id):
         url = self.baseurl + "/%s/%s/%s" % (self.doc_index, self.doc_type, str(id))
 
     #根据关键字搜索
+#   it is not good
     def search_by_key(self, keys):
         url = self.baseurl + "/%s/%s/_search?pretty" % (self.doc_index, self.doc_type)
         body = {
             'query': {
-                'match': {'content': keys}
-            },
-            '_source': [ 'name']
+                'match':  keys
+            }
         }
         req = requests.get(url, data = json.dumps(body))
         #print req.content
         return req
 
-    def base_search(self, doc_index, doc_type, body):
-        url = self.baseurl + "/%s/%s/_search?pretty" % (doc_index, doc_type)
+    def search_all(self, key, index, doc_type=None):
+        if doc_type:
+            url = self.baseurl + "/%s/%s" % (index, doc_type)
+        else:
+            url = self.baseurl + "/%s" % index
+        body = {
+            "query" : {
+                "match" : key
+            }     
+        }
+        return self.base_search(url, body)
+
+    def base_search(self, url, body ):
+        url = url +  "/_search?pretty" 
         req = requests.get(url, data = json.dumps(body))
         print req.content
         return req
@@ -226,7 +292,7 @@ class BaseElasticsearch(object):
     
 class BodyFactory(object):
 
-    def createbodyjson(self, doc_type, typedict):
+    def createbody(self, doc_type, typedict):
         properties = {}
         for k,v in typedict.items():
             properties[k] = self.createfield(v)
@@ -235,7 +301,7 @@ class BodyFactory(object):
                "properties" : properties
             }     
         }
-        return json.dumps(body)
+        return body
 
     def createfield(self, fieldtype):
         if(fieldtype == "smartcn"):
@@ -252,10 +318,16 @@ class BodyFactory(object):
             return {"type": "integer"}
         elif(fieldtype == "float"):
             return {"type": "float"}
+        elif(fieldtype == "double"):
+            return {"type": "double"}
         elif(fieldtype == "short"):
             return {"type": "short"}
         elif(fieldtype == "point"):
             return {"type": "geo_point"}
+        elif(fieldtype == "object"):
+            return {"type": "object"}
+        elif(fieldtype == "nested"):
+            return {"type": "nested"}
         else:
             raise
 
