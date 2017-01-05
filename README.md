@@ -13,6 +13,7 @@
  - BaseElasticsearch.py   elasticsearch封装例子
  - myimage.py          Image模块的使用例子
  - myargparse          argparse模块小李子
+ - decorator.py          装饰器使用例子
 + VIM
  - vimrc         配置文件
 
