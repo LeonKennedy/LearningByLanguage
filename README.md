@@ -14,6 +14,7 @@
  - myimage.py          Image模块的使用例子
  - myargparse          argparse模块小李子
  - decorator.py          装饰器使用例子
+ - truingrobt.py         turing机器人聊天的例子
 + VIM
  - vimrc         配置文件
 

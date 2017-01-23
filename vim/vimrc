@@ -21,3 +21,34 @@ set fileformats=unix
 " set encoding=prc    
 set hlsearch    "高亮显示所有匹配    
 " set foldmethod 
+"
+"###################    set file head start  #########################
+""autocmd创建新文件自动调用setfilehead()函数
+autocmd BufNewFile *.v,*.sv,*.cpp,*.c,*.h exec ":call Setfilehead()"
+func Setfilehead()
+    call append(0, '/***********************************************')
+    call append(1, '#')
+    call append(2, '#      Filename: '.expand("%"))
+    call append(3, '#')
+    call append(4, '#        Author: olenji - lionhe0119@hotmail.com')
+    call append(5, '#   Description: ---')
+    call append(6, '#        Create: '.strftime("%Y-%m-%d %H:%M:%S"))
+    call append(7, '# Last Modified: '.strftime("%Y-%m-%d %H:%M:%S"))
+    call append(8, '***********************************************/')
+"    call append(9, '')
+    endfunc
+
+"map F2 to creat file head comment
+"映射F2快捷键，生成后跳转至第10行，然后使用o进入vim的插入模式
+map <F2> :call Setfilehead()<CR>:10<CR>o
+"###################    set file head end   ##########################
+
+"###################    set comment start  #########################
+func SetComment()
+    call append(line(".")  , '//**************** comment start ********************')
+    call append(line(".")+1, '//**************** comment end ********************')
+    endfunc
+
+"映射F11快捷键，生成后跳转至下行，然后使用O进入vim的插入模式
+map <F11> :call SetComment()<CR>j<CR>O
+"###################    set comment end   ##########################

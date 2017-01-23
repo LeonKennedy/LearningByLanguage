@@ -23,7 +23,8 @@ class JSONDataManager:
             return
         else:
             print "connect..."
-            self.conn = MySQLdb.connect(host='56c1952d3edfa.gz.cdb.myqcloud.com',user='cdb_outerroot',passwd='quchu2015',db='scrapingdb',port=8426, charset='utf8')
+            #self.conn = MySQLdb.connect(host='56c1952d3edfa.gz.cdb.myqcloud.com',user='cdb_outerroot',passwd='quchu2015',db='scrapingdb',port=8426, charset='utf8')
+            self.conn = MySQLdb.connect(host='56f214b4408fa.gz.cdb.myqcloud.com',user='cdb_outerroot',passwd='quchu2015',db='quchu',port=12020, charset='utf8')
             print "create cursor..."
             self.cur = self.conn.cursor()
 
@@ -67,6 +68,22 @@ class JSONDataManager:
             nextcraltime += datetime.timedelta(seconds=1)
             print insertsql
             self.localcur.execute(insertsql)
+
+    def temp(self):
+        a = open("dp_categories.json",'r')
+        tempstr = ""
+        for line in a:
+            tempstr += line.replace("\n",'')
+
+        datas = json.loads(tempstr)
+        for record in datas['categoryNavs']:
+            insertsql = "insert into dp_categories values(%s , '%s', %s)" %(record['id'], record['name'].encode("utf8"),record['parentId'])
+            #print insertsql
+            self.cur.execute(insertsql)
+
+        
+
+
     '''
         self.cursor.execute(sql)
         self.cursor.fetchone()
@@ -111,15 +128,13 @@ class JSONDataManager:
             if re.search('action',f):
                 self.olenji(floder + '/' + f)
 '''
+    
             
         
     
 if __name__ == '__main__':
     b = JSONDataManager()
-    b.initConn()
-  #  b.olenji()
+    b.temp()
+    #b.olenji()
     #b.cur.execute("select product_id,latitude,longitude from sjs_yhouse where product_id in (18872,18934,18940,18943,18987,19003)")
     #print b.cur.fetchall()
-    b.cur.execute("select product_id,latitude,longitude from sjs_yhouse where latitude = 0")
-    print b.cur.fetchall()
-    b.closeConn()
