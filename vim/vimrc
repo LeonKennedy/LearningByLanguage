@@ -1,3 +1,55 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+ " alternatively, pass a path where Vundle should install plugins
+ "call vundle#begin('~/some/path/here')
+
+ " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+ " The following are examples of different formats supported.
+ " Keep Plugin commands between vundle#begin/end.
+ " plugin on GitHub repo
+"  Plugin 'tpope/vim-fugitive'
+ " plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+ " Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+Plugin 'bling/vim-bufferline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to  auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"   airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_b = '%{strftime("%c")}'
+let g:airline_section_y = 'BN: %{bufnr("%")}'
+
+
+"  olenji
 set encoding=utf8
 syntax on
 set t_Co=256
@@ -6,6 +58,7 @@ set background=dark
 set tabstop=4 "ts=4 设置tab键的宽度为4个空格"
 set expandtab "设置tab键为空格替代"
 
+
 set nocompatible "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限    
 set number "显示行号    
 set autoindent "vim使用自动对起，也就是把当前行的对起格式应用到下一行；    
@@ -13,15 +66,14 @@ set smartindent "依据上面的对起格式，智能的选择对起方式，对
 set shiftwidth=4 "自动缩进的宽度    
 set showmatch "设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号    
 "set cursorline    
-set nobackup "当修改文件时不进行自动备份    
-" just for encode    
+"set nobackup "当修改文件时不进行自动备份    
+"" just for encode    
 set fileencodings=utf-8,gb2312,gbk,gb18030    
 set termencoding=utf-8    
 set fileformats=unix    
 " set encoding=prc    
-set hlsearch    "高亮显示所有匹配    
+" set hlsearch    "高亮显示所有匹配    
 " set foldmethod 
-"
 "###################    set file head start  #########################
 ""autocmd创建新文件自动调用setfilehead()函数
 autocmd BufNewFile *.v,*.sv,*.cpp,*.c,*.h exec ":call Setfilehead()"
@@ -36,7 +88,19 @@ func Setfilehead()
     call append(7, '# Last Modified: '.strftime("%Y-%m-%d %H:%M:%S"))
     call append(8, '***********************************************/')
 "    call append(9, '')
-    endfunc
+endfunc
+
+autocmd BufNewFile *.py exec ":call SetPYfilehead()"
+func SetPYfilehead()
+    call append(0, '#!/usr/bin/env python')
+    call append(1, '#-*- coding: utf-8 -*-')
+    call append(2, '# @Filename: '.expand("%"))
+    call append(3, '# @Author: olenji - lionhe0119@hotmail.com')
+    call append(4, '# @Description: ---')
+    call append(5, '# @Create: '.strftime("%Y-%m-%d %H:%M:%S"))
+    call append(6, '# @Last Modified: '.strftime("%Y-%m-%d %H:%M:%S"))
+    call append(7, '#')
+endfunc
 
 "map F2 to creat file head comment
 "映射F2快捷键，生成后跳转至第10行，然后使用o进入vim的插入模式
