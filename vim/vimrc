@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
  " alternatively, pass a path where Vundle should install plugins
@@ -60,7 +61,7 @@ set expandtab "设置tab键为空格替代"
 
 
 set nocompatible "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限    
-set number "显示行号    
+set nonumber "显示行号    
 set autoindent "vim使用自动对起，也就是把当前行的对起格式应用到下一行；    
 set smartindent "依据上面的对起格式，智能的选择对起方式，对于类似C语言编    
 set shiftwidth=4 "自动缩进的宽度    
