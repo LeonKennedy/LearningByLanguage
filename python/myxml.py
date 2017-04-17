@@ -7,7 +7,7 @@
  py_version ：2.7.2
 '''
 
-import re, json, os, MySQLdb
+import re, json, os
 #import urllib.parse
 #import urllib.request
 
@@ -86,7 +86,7 @@ class ExcelProcess(object):
     def one(self):
         for filename in self.files:
             for a, b in self.getRecords(filename):
-                print a,b
+                print(a,b)
         pass
 if __name__ == '__main__':
     #文件
