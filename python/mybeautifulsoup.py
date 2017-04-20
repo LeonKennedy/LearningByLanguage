@@ -1,41 +1,46 @@
-#encoding:utf-8
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+# @Filename: run.py
+# @Author: olenji - lionhe0119@hotmail.com
+# @Description: ---
+# @Create: 2017-04-20 13:24:21
+# @Last Modified: 2017-04-20 13:24:21
+#
 
-'''
- author     : olenji
- date       : 2016-11-8 14:20:00
- function   : BeautifulSoup的小李子
- py_version ：2.7.2
-'''
 
+import requests, pdb, pymysql
 from bs4 import BeautifulSoup
-import urllib
-import json
-import re
 
-class BSProcess(object):
-    
-    @staticmethod
-    def simplify(data):
-        bs = BeautifulSoup(data, 'lxml')
-        print dir(bs)
-        print bs.get_text()
+class Taobao:
+
+    def __init__(self):
+        self.connect = pymysql.connect(host='localhost',user = 'kst',password='kst410',
+                db='kst', charset='utf8mb4')
+        self.cur = self.connect.cursor()
+        self.s = requests.Session()
+    def marketpage(self):
+        url = "https://www.taobao.com/tbhome/page/market-list"
+        r = self.s.get(url)
+        soup = BeautifulSoup(r.content, 'lxml')
+        records = list()
+        for items in soup('div',class_='category-items'):
+            subitems = items('a', class_='category-name')
+            for item in subitems:
+                record = {'url' : item.get('href'), 'text' : item.text}
+                records.append(record)
+        self.pip_market(records)
+    def pip_market(self, records):
+        pass
+
+    def __del__(self):
+        self.cur.close()
+        self.connect.close()
 
 
-    def test(self):
-        web = urllib.urlopen("http://mp.weixin.qq.com/s?timestamp=1476369792&src=3&ver=1&signature=lmdxN1Z5v5SfurbAqO0C6n*eNNQRoWNpyfDlEOeDSIOFqoB92*y1vKfznSrrk2qgvpkCqkmW3qoarYCJEh11ocRTl9RnSRVHerzGzxAQSlbz87YPa5qQGr8irIunUt40H4T*qiPEkP2OerLZZpRYGyht0f*Knl3rijqlW3s8F0A=")
-        soup = BeautifulSoup(web.read(),'lxml')
-        print re.search('.*var msg_link.*', str(soup)).group(0)
-        
-        msg_link=re.search('var msg_link = \"(.+?)\"', str(soup)).group(1)
-        print re.sub('amp;','',msg_link)
-        scripts = soup.find_all('script')
-        reg = re.compile('.*var msg_link.*')
-        #for script in scripts:
-        #	m = re.search('.*var msg_link.*', script)
-        #	m.group(0)
-        
 
 if __name__ == "__main__":
-    b =  BSProcess()
-    b.simplify("<a>asa</a>")
+    t = Taobao()
+    #t.marketpage()
+
+
 

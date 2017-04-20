@@ -1,0 +1,20 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias la='ls -a'
+alias chpy='source /root/pythonenv/py36env/bin/activate'
+export PS1='\e[33;40m[\u@T \w]\$ \e[0m' 
+
+PATH=$PATH:/root/bin
+export PATH
