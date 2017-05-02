@@ -16,6 +16,7 @@
  - decorator.py          装饰器使用例子
  - truingrobt.py         turing机器人聊天的例子
  - mythread.py          线程小例子
+ - mongo.py              mongoDB的小例子
 + VIM
  - vimrc         配置文件
 
