@@ -7,6 +7,11 @@
 # @Last Modified: 2017-05-02 16:43:06
 #
 
+try:
+    from urllib.parse import quote_plus
+except ImportError:
+    from urllib import quote_plus
+
 from datetime import datetime
 from pymongo import MongoClient
 import pdb, logging, json
@@ -14,7 +19,10 @@ import pdb, logging, json
 logging.basicConfig(level=logging.INFO)
 class mangguoDB:
     def __init__(self):
-        self.client = MongoClient()
+
+        uri = "mongodb://%s:%s@%s/taobao" % (
+            "kst", "kst410", "121.40.107.148:27017")
+        self.client = MongoClient(uri)
         self.goods_list = list()
         self.insertCount = 0
 
@@ -107,6 +115,7 @@ class mangguoDB:
 
 if __name__ == "__main__":
     a = mangguoDB()
+    a.test()
     #a.query('taobao', 'ask_around')
     #a.taobaoSpiltAsk()
     #a.yhdExtract()
