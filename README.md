@@ -17,6 +17,7 @@
    - truingrobt.py         turing机器人聊天的例子
    - mythread.py          线程小例子
    - mongo.py              mongoDB的小例子
+   - bloomfilter            布隆过滤器的小例子
  + VIM
    - vimrc         配置文件
 
