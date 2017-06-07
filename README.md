@@ -18,6 +18,7 @@
    - mythread.py          线程小例子
    - mongo.py              mongoDB的小例子
    - bloomfilter            布隆过滤器的小例子
+   - mysocket.py            socket的小例子
  + VIM
    - vimrc         配置文件
 
