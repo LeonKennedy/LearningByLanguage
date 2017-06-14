@@ -27,8 +27,8 @@ def socket_client():
     ret = obj.recv(1024).decode("utf-8")
     print(ret)
 
+
 if __name__ == "__main__":
-    
     if len(sys.argv) ==  2 and sys.argv[1]== 'server':
         print("sever...")
         socket_server()

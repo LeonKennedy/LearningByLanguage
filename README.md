@@ -19,6 +19,7 @@
    - mongo.py              mongoDB的小例子
    - bloomfilter            布隆过滤器的小例子
    - mysocket.py            socket的小例子
+   - websocket_server_utils.py         websocket的一个小例子(包括解包组包，模拟握手请求)
  + VIM
    - vimrc         配置文件
 
