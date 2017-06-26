@@ -6,7 +6,63 @@ __author__ =  "olenji"
     py_version  : 2.7
 '''
 
-import json,MySQLdb, sys,datetime
+import json, sys,datetime, pymysql, pdb
+
+class MysqlTool:
+    
+    def __init__(self):
+        self.connect = pymysql.connect(host='localhost',user = 'kst',password='kst410',
+                db='kst', charset='utf8mb4')
+        self.cur_q = self.connect.cursor()
+        self.cur_unique_query = self.connect.cursor()
+        self.cur_insert = self.connect.cursor()
+
+
+
+    # +++++++++++++++++++ insert +++++++++++++++++
+
+
+    def insertByDict(self, table, item):
+        keys = list()
+        values = list()
+        for (k,v) in item.items():
+            if v:
+                keys.append(k)
+                v = str(v) if isinstance(v, int) else '\"' + v + '\"'
+                values.append(v)
+        sql = "insert %s(%s) values(%s)" % ( table, ','.join(keys), ','.join(values))
+        if self.cur_insert.execute(sql):
+            return True
+        else:
+            print "error insert item"
+            return False
+
+    def uniqueInsertByDict(self, table, item ,unique_key):
+        sql = "select * from %s where %s='%s'" % (table, unique_key, item[unique_key])
+        if self.cur_unique_query.execute(sql):
+            return False
+        else:
+            return self.insertByDict(table, item)
+
+    def flush(self):
+        self.cur_insert.close()
+        a = self.connect.commit()
+        self.cur_insert = self.connect.cursor()
+
+    # ++++++++++++++++++++ query +++++++++++++++
+    def queryAndFetchall(self, sql):
+
+
+
+
+    def __del__(self):
+        self.cur_q.close()
+        self.cur_unique_query.close()
+        self.cur_insert.close()
+        self.connect.commit()
+        self.connect.close()
+
+    
 class JSONDataManager:
 
     conn = None
@@ -133,8 +189,9 @@ class JSONDataManager:
         
     
 if __name__ == '__main__':
-    b = JSONDataManager()
-    b.temp()
+    mt = MysqlTool()
+    item = {'aaa': 123,'bbb':'valueb','ccc':'valuec'}
+    mt.insertByDict('taobao_items',item) 
     #b.olenji()
     #b.cur.execute("select product_id,latitude,longitude from sjs_yhouse where product_id in (18872,18934,18940,18943,18987,19003)")
     #print b.cur.fetchall()

@@ -14,7 +14,7 @@ import pdb, logging, json
 logging.basicConfig(level=logging.INFO)
 class mangguoDB:
     def __init__(self):
-        self.client = MongoClient()
+        self.client = MongoClient('121.40.107.148')
         self.goods_list = list()
         self.insertCount = 0
 
@@ -107,6 +107,7 @@ class mangguoDB:
 
 if __name__ == "__main__":
     a = mangguoDB()
+    a.test()
     #a.query('taobao', 'ask_around')
     #a.taobaoSpiltAsk()
     #a.yhdExtract()
