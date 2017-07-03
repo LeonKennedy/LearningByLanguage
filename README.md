@@ -32,3 +32,4 @@
    - input.txt            压缩用
    - decompress.js         解压小例子
    - example.js             web小例子
+   - excel.js              EXCEL存取小例子
