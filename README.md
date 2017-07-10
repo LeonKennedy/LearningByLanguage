@@ -36,3 +36,5 @@
    - decompress.js         解压小例子
    - example.js             web小例子
    - websrc               web小例子 request, upload, excel
+   - excel.js              EXCEL存取小例子
+   - http_request.js         request小李子
