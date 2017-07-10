@@ -20,6 +20,9 @@
    - bloomfilter            布隆过滤器的小例子
    - mysocket.py            socket的小例子
    - websocket_server_utils.py         websocket的一个小例子(包括解包组包，模拟握手请求)
+   - entry_audit.py             sklrean线性回归'hubar算法'
+   - freight_audit.py           多元线性回归'ransac'算法
+   - falconServer.py            falcon web框架的小例子
  + VIM
    - vimrc         配置文件
 
@@ -32,3 +35,4 @@
    - input.txt            压缩用
    - decompress.js         解压小例子
    - example.js             web小例子
+   - websrc               web小例子 request, upload, excel
