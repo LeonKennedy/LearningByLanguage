@@ -1,0 +1,24 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "here is test for koa",
+  "main": "my-koa-app.js",
+  "scripts": {
+    "test": "node test",
+    "start": "node my-koa-app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://adfaf"
+  },
+  "keywords": [
+    "koa",
+    "async"
+  ],
+  "author": "coffee",
+  "license": "ISC",
+  "devDependencies": {
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1"
+  }
+}
