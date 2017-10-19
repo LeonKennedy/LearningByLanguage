@@ -3,6 +3,9 @@
 
 
 ##### 目录结构
+ + C
+   - core        堆栈塞满 产生core
+   - thread      线程事例
  + python
    - Clouse.py      一个闭包小例子  
    - mysql.py       连接数据库例子

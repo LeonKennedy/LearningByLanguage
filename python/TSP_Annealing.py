@@ -29,19 +29,23 @@ class SimulatedAnnealing:
         return distance
         
     def run(self):
+        times = 1
         while(self.temperature > self.min_temperature):
             adjustData = self.adjust(self.places) 
             adjustDis = self.sumDistance(adjustData)
-            currentDis = self.sumDistance(self.places)
-            gap = self.sumDistance(self.places) - self.sumDistance(adjustData)
+            gap = self.sumDistance(self.places) - adjustDis
             if(gap > 0):
                 self.places = adjustData
-                print('swtich, distance is: %d', adjustDis)
+                print('swtich $d times, distance is: %d', (times, adjustDis))
+                times += 1
+                
             else:
                 if (math.exp( gap/self.temperature) > random.rand()):
                     self.places = adjustData
+                    print('swtich $d times, distance is: %d', (times, adjustDis))
+                    times += 1
             self.temperature *= self.delta
-        return currentDis
+        return adjustDis
 
     def show(self):
         #plt.scatter(self.places[:,0], self.places[:,1])
