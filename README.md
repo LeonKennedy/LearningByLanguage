@@ -24,6 +24,8 @@
    - freight_audit.py           多元线性回归'ransac'算法
    - falconServer.py            falcon web框架的小例子
    - myperson.py              计算两个向量的person相关性
+   - TSP.py                 TSP问题的爬山算法(py36)
+   - TSP_Annealing.py                 TSP问题的模拟退火算法(py36)
  + VIM
    - vimrc         配置文件
 
