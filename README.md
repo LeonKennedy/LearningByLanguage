@@ -29,6 +29,7 @@
    - myperson.py              计算两个向量的person相关性
    - TSP.py                 TSP问题的爬山算法(py36)
    - TSP_Annealing.py                 TSP问题的模拟退火算法(py36)
+   - classifier.py           分类器-naivebayes
  + VIM
    - vimrc         配置文件
 
