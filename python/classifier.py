@@ -66,8 +66,19 @@ class naivebayes(classifier):
         catprob = self.catcount(cat) / self.totalcount()
         return self.docprob(item, cat) * catprob
 
+class fisherclassifier(classifier):
+    
+    def cprob(self, f, cat):
+        clf = self.fprob(f,cat)
+        if clf==0 : return 0
+
+        freqsum = sum([self.fprob(f,c) for c in self.categories()])
+
+        return clf/(freqsum)
+
 if __name__ == "__main__":
-    cf = naivebayes();
+    #cf = naivebayes();
+    cf = fisherclassifier();
     docs = (('Nobody owns the water.','good'),\
         ('the quick rabbit jumps fences', 'good'),\
         ('buy pharmaceuticals now', 'bad'), \
@@ -77,5 +88,9 @@ if __name__ == "__main__":
         cf.train(*i)
     #print(cf.fprob('money', 'good'))
     #$print(cf.weightprob('money', 'good', cf.fprob))
-    print(cf.prob('quick rabbit', 'good'))
-    print(cf.prob('quick rabbit', 'bad'))
+
+    #print(cf.prob('quick rabbit', 'good'))
+    #print(cf.prob('quick rabbit', 'bad'))
+
+    print(cf.cprob('quick', 'good'))
+    print(cf.cprob('money', 'bad'))
