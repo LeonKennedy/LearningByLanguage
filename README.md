@@ -30,6 +30,8 @@
    - TSP.py                 TSP问题的爬山算法(py36)
    - TSP_Annealing.py                 TSP问题的模拟退火算法(py36)
    - classifier.py           分类器-naivebayes-fisher 两个分类器
+   - decisionTree.py         决策树分类器
+      + 信息熵计算
  + VIM
    - vimrc         配置文件
 
