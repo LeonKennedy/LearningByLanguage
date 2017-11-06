@@ -108,7 +108,8 @@ class DecisionTree:
         if self.stopCondition(x,y) == True:
             leaf = self.createNode()
             leaf.isleaf = True
-            leaf.label = y[0]
+            bincount = np.bincount(y)
+            leaf.label = np.argmax(bincount)
             return leaf
         else:
             x_data = x if len(x.shape) == 1 else x[:,0]
