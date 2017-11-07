@@ -8,7 +8,16 @@ import pdb
 
 def createDataSet():
     dataSet = datasets.load_iris()
-    return dataSet.data[:150:10, :], dataSet.target[:150:10]
+    iris_X = dataSet.data
+    iris_y = dataSet.target
+    np.random.seed(1)
+    indices = np.random.permutation(len(iris_X))
+    iris_X_train = iris_X[indices[:-10]]
+    iris_y_train = iris_y[indices[:-10]]
+    iris_X_test  = iris_X[indices[-10:]]
+    iris_y_test  = iris_y[indices[-10:]]
+    dataSet = datasets.load_iris()
+    return iris_X_train, iris_y_train, iris_X_test, iris_y_test
 
 class Node:
     label = None
@@ -18,15 +27,21 @@ class Node:
     label = None
     childrens = list()
 
-    def predict(self, row):
+
+    def predict(self, data):
+        results = []
+        for i in data:
+            results.append(self.spredict(i))
+        return np.array(results)
+
+    def spredict(self, row):
         if self.isleaf:
-            self.printself()
             return self.label
         else:
             if row[0] <= self.index:
-                return self.childrens[0].predict(row[1:])
+                return self.childrens[0].spredict(row[1:])
             else:
-                return self.childrens[1].predict(row[1:])
+                return self.childrens[1].spredict(row[1:])
 
     def printself(self):
         if self.isleaf:
@@ -127,12 +142,15 @@ class DecisionTree:
 
             
 if __name__ == "__main__":
-    x, y = createDataSet()
-    a = DecisionTree(x[:,(0,1)],y)
+    x, y, xt, yt = createDataSet()
+    a = DecisionTree(x,y)
     #a.getGini(x[:,3],y)
     #print(a.findBestSplit(x,y))
     a.root = a.treeGrowth(x,y)
     #a.root.printself()
-    result = a.root.predict(x[10,:])
+    result = a.root.predict(xt)
+    print('preidct:')
     print(result)
+    print('target:')
+    print(yt)
 
