@@ -69,7 +69,7 @@ class ExcelProcess(object):
         ws1.title = "range names"
         
         for row in range(1, 40):
-            ws1.append(range(600))
+            ws1.append([1,2,3,4,5])
         
         ws2 = wb.create_sheet(title="Pi")
         
