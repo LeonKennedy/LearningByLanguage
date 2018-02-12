@@ -10,10 +10,10 @@
 from sshtunnel import SSHTunnelForwarder
 
 server = SSHTunnelForwarder(
-    'pahaz.urfuclub.ru',
-    ssh_username="pahaz",
-    ssh_password="secret",
-    remote_bind_address=('127.0.0.1', 8080)
+    '118.31.37.91',
+    ssh_username="coffee",
+    ssh_password="olenji@0409",
+    remote_bind_address=('127.0.0.1', 33488)
     )
 
 server.start()

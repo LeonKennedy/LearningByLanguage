@@ -185,8 +185,7 @@ class JSONDataManager:
                 self.olenji(floder + '/' + f)
 '''
     
-            
-        
+
     
 if __name__ == '__main__':
     mt = MysqlTool()
