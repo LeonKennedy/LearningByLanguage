@@ -12,7 +12,8 @@ fi
 
 alias rm='rm -i'
 alias cp='cp -i'
-alias la='ls -a'
+alias la='ls -A'
+alias ll='ls -al'
 alias chpy='source /root/pythonenv/py36env/bin/activate'
 export PS1='\e[33;40m[\u@T \w]\$ \e[0m' 
 
