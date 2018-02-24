@@ -5,4 +5,5 @@
 + sample6 辅助函数的例子
  - compact/extract 
 + sample7 反射
-+ sample9 array 例子
++ sample9  传递引用的例子
++ array   array的例子
