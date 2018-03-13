@@ -36,6 +36,7 @@
    - excel2003.py       主要用来处理excel2003 .xls 文件的写入
    - tunnel             隧道链接remote server
    - m_log              模块logging的小例子
+   - module_datetime    模块datetime, calendar 的小李子
  + VIM
    - vimrc         配置文件
 
