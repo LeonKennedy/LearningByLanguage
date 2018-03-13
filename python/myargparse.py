@@ -8,11 +8,6 @@
 '''
 
 from PIL import Image
-from StringIO import StringIO
-from identification import main
-
-
-
 
 import argparse  
   
@@ -38,10 +33,7 @@ args = parser.parse_args()
 #假如执行过程中， 调用参数 -S 80 或 --srcport=80  传递  
 #args.srcport = 80 
 
-
-
 #执行时可能存在多个空格  
 #/app.py --realserver="1.1.1.1 2.2.2.2   3.3.3.3       4.4.4.4"  
 #realip =  re.sub(r'\s+', ' ',args.realserver)  
 #realip 格式变成 1.1.1.1 2.2.2.2 3.3.3.3 4.4.4.4 只存在一个空格分隔符
-

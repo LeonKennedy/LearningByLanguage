@@ -14,4 +14,4 @@ aa = "//list.taobao.com/itemlist/acg.htm?cat=54332006%2C54428001%2C54538002%2C54
 c = [ b for b in aa.replace('?','&').split('&') if b[0:4] == "cat="][0]
 
 
-print c
+print(c)
