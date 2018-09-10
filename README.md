@@ -39,6 +39,7 @@
    - module_datetime    模块datetime, calendar 的小李子
    - lambda            闭包的使用
    - coroutine         协程小例子
+   - mydatetime        日期的使用
  + VIM
    - vimrc         配置文件
 
