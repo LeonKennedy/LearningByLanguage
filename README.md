@@ -40,6 +40,7 @@
    - lambda            闭包的使用
    - coroutine         协程小例子
    - mydatetime        日期的使用
+   - coroutine_gevent    协程包gevent的异步使用
  + VIM
    - vimrc         配置文件
 
