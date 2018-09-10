@@ -38,6 +38,7 @@
    - m_log              模块logging的小例子
    - module_datetime    模块datetime, calendar 的小李子
    - lambda            闭包的使用
+   - coroutine         协程小例子
  + VIM
    - vimrc         配置文件
 
