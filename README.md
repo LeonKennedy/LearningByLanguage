@@ -44,6 +44,7 @@
    - mydoctest           使用doctest的例子
    - magic_method     魔术方法__repr__ __add__ __mul__ __abs__ __bool__
    - myarray          array数组的使用方法
+   - mydeque       deque 例子
  + VIM
    - vimrc         配置文件
 
