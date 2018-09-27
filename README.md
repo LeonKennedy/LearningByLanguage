@@ -46,6 +46,7 @@
    - myarray          array数组的使用方法
    - mydeque       deque 例子
    - default_dict   collection defaultdict小例子 和 setdefault例子
+   - counter     counter的例子 
  + VIM
    - vimrc         配置文件
 
