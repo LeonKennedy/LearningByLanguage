@@ -47,6 +47,7 @@
    - mydeque       deque 例子
    - default_dict   collection defaultdict小例子 和 setdefault例子
    - counter     counter的例子 
+   - mycrypto     AES加密解密的例子
  + VIM
    - vimrc         配置文件
 
