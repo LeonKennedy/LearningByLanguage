@@ -48,6 +48,7 @@
    - default_dict   collection defaultdict小例子 和 setdefault例子
    - counter     counter的例子 
    - mycrypto     AES加密解密的例子
+   - mytag      函数的灵活传参 
  + VIM
    - vimrc         配置文件
 
