@@ -35,3 +35,5 @@ class C:pass
 c = C()
 print(set(dir(tag)) - set(dir(c)))
 
+
+print(tag.__defaults__)

@@ -49,6 +49,7 @@
    - counter     counter的例子 
    - mycrypto     AES加密解密的例子
    - mytag      函数的灵活传参 
+   - myfunctools  functools 工具的使用
  + VIM
    - vimrc         配置文件
 
