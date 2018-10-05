@@ -37,3 +37,19 @@ m = Metropolis(name = 'China', cc='CN', coor=LatLong(Lat=12, Long=34))
 from operator import attrgetter
 mash = attrgetter('name', 'coor.Long')
 print(mash(m))
+
+
+print('=' * 10)
+a = 'this is a apple'
+from operator import methodcaller
+upcase = methodcaller('upper')
+print(upcase(a))
+recase = methodcaller('replace',' ','-')
+print(recase(a))
+
+
+from functools import partial
+partmul = partial(mul, 3)
+print(partmul(4))
+print([ partmul(i) for i in range(7)])
+#parialmethod
