@@ -50,6 +50,7 @@
    - mycrypto     AES加密解密的例子
    - mytag      函数的灵活传参 
    - myfunctools  functools 工具的使用
+   - global   dis包的用法
  + VIM
    - vimrc         配置文件
 
