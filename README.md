@@ -54,6 +54,7 @@
    - vertor   平方根 迭代 静态方法 
      + 使用array memoryview.cast相互 二进制转换
    -  myweakref   弱引用
+   - format      str格式化 高级
  + VIM
    - vimrc         配置文件
 
