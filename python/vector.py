@@ -51,5 +51,25 @@ class Vertor2d:
     memv = memoryview(octets[1:]).cast(typecode)
     print(memv)
     return cls(*memv)
-    
+
+
+  def angle(self):
+    return math.atan2(self.y, self.x)
+
+  def __format__(self, fmt):
+    if fmt.endswith('p'):
+      fmt = fmt[:-1]
+      coods = (abs(self), self.angle())
+      outer = '<{}, {}>'
+    else:
+      coods = self
+      outer = '({} {})'
+    components = (format(c, fmt) for c in coods)
+    return outer.format(*components)
+
+
+if __name__ == "__main__":
+  v = Vertor2d(3,4)
+  print(format(v,'.5'))
+  print(format(v,'.5p'))
   
