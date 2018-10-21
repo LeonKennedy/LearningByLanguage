@@ -52,7 +52,11 @@
    - myfunctools  functools 工具的使用
    - global   dis包的用法
    - vertor   平方根 迭代 静态方法 
+     + 如何使用特殊方法 约定结构
      + 使用array memoryview.cast相互 二进制转换
+     + 序列结构  __len__ __getitem__
+     + 切片对象
+     + 获取属性__getattr__
    -  myweakref   弱引用
    - format      str格式化 高级
  + VIM
