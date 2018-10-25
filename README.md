@@ -59,6 +59,7 @@
      + 获取属性__getattr__
    -  myweakref   弱引用
    - format      str格式化 高级
+   - myzip    大小zip
  + VIM
    - vimrc         配置文件
 

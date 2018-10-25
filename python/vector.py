@@ -8,9 +8,9 @@
 
 
 from array import array
-import math, pdb
-class Vertor2d:
+import math, pdb, functools, operator
 
+class Vertor2d:
   
   # 转换字节序列编码
   # d 采用8字节双精度浮点
@@ -47,7 +47,6 @@ class Vertor2d:
   # ord   str('b')    -> ascii(100)
   def __bytes__(self):
     return (bytes([ord(self.typecode)]) + bytes(array(self.typecode, self)))
-
 
   @classmethod
   def formbytes(cls, octets):
@@ -103,7 +102,13 @@ class Vector:
     return str(tuple(self))
 
   def __eq__(self, other):
-    return tuple(self) == tuple(other)
+    if len(self) != len(other):
+      return False
+    return all(a == b for a, b in zip(self,other))
+
+  def __hash__(self):
+    hashes = (hash(x) for x in self._component)
+    return functools.reduce(operator.xor, hashes, 0)
 
   def __bytes__(self):
     return (bytes([ord(self.typecode)]) + bytes(self._component))
