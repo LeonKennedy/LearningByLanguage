@@ -119,6 +119,15 @@ class Vector:
   def __abs__(self):
     return math.sqrt(sum(x * x for x in self))
 
+  def angle(self, n):
+    # 第10章
+    pass
+
+  def angles(self):
+    # 第10章 fluent
+    # 全球面
+    pass
+
   @classmethod
   def formbytes(cls, octets):
     typecode = chr(octets[0])
