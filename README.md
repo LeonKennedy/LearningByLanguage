@@ -60,6 +60,10 @@
    -  myweakref   弱引用
    - format      str格式化 高级
    - myzip    大小zip
+   - tombola   抽象基类 
+     + tombola_test.rst   doctest测试文件
+     + doctest 的使用
+     + 注册虚拟基类
  + VIM
    - vimrc         配置文件
 
