@@ -64,6 +64,7 @@
      + tombola_test.rst   doctest测试文件
      + doctest 的使用
      + 注册虚拟基类
+  - sentence    迭代器 生成器 区别
  + VIM
    - vimrc         配置文件
 
