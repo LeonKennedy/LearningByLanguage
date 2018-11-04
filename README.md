@@ -65,6 +65,7 @@
      + doctest 的使用
      + 注册虚拟基类
   - sentence    可迭代对象 迭代器 生成器 区别
+  - myitertools   itertools的使用
  + VIM
    - vimrc         配置文件
 
