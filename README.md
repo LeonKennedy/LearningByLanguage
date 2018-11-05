@@ -66,6 +66,7 @@
      + 注册虚拟基类
   - sentence    可迭代对象 迭代器 生成器 区别
   - myitertools   itertools的使用
+  - yieldfrom    yield for coroutines
  + VIM
    - vimrc         配置文件
 
