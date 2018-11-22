@@ -49,6 +49,9 @@ print('Correct answers: {:.2%}'.format(38/65))
 print('Correct answers: {:.2}'.format(38/65))
 
 
+d = dict(who='tim', what='swim')
+print('{who} like {what}'.format(d))
+
 import datetime
 d = datetime.datetime(2018, 10, 20, 12, 15, 58)
 print('{:%Y-%m-%d %H:%M:%S}'.format(d))
