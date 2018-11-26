@@ -67,7 +67,7 @@
   - sentence    可迭代对象 迭代器 生成器 区别
   - myitertools   itertools的使用
   - yieldfrom    yield for coroutines
-  - LookingGlass  使用with的方法
+  - LookingGlass  1.使用with的方法 2.contextmanager的用法
  + VIM
    - vimrc         配置文件
 
