@@ -23,6 +23,10 @@ class LookingGlass:
         if exc_type is ZeroDivisionError:
             print('Please Do Not dividle by z!')
             return True
+        if exc_type is TypeError:
+            print('Baceful TypeError')   
+            #  这里没有返回 propagate exception
+
 
 @contextlib.contextmanager
 def looking_glass():
@@ -31,19 +35,25 @@ def looking_glass():
         original_write(text[::-1])
 
     sys.stdout.write = reverse_write
-    yield 'JABBERWCOKY'
-    sys.stdout.write = original_write
+    try:
+        yield 'JABBERWCOKY'
+    except:
+        pass
+    finally:
+        sys.stdout.write = original_write
 
 
 
     
 if __name__ == "__main__":
     with LookingGlass() as what:
+        #print(None + 4)
         print("Alice, Kitty and Snowdrop")
         print(what)
     print('Back to Normal')
     print('*' * 45)
     with looking_glass() as what:
         print("Alice, Kitty and Snowdrop")
+        print(None + 4)
         print(what)
     print('Back to Normal')
