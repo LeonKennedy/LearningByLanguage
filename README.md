@@ -68,6 +68,7 @@
   - myitertools   itertools的使用
   - yieldfrom    yield for coroutines
   - LookingGlass  1.使用with的方法 2.contextmanager的用法
+  - multiprocess  多进程对计算密集的影响
  + VIM
    - vimrc         配置文件
 
