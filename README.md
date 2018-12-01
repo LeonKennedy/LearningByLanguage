@@ -69,6 +69,7 @@
   - yieldfrom    yield for coroutines
   - LookingGlass  1.使用with的方法 2.contextmanager的用法
   - multiprocess  多进程对计算密集的影响
+  - texi_simulation  出租车 运营仿真系统` 
  + VIM
    - vimrc         配置文件
 
