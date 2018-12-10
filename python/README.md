@@ -63,3 +63,4 @@
 - multiprocess  多进程对计算密集的影响
 - texi_simulation  出租车 运营仿真系统` 
 - compare_thread_asyncio  对比thread和acyncio模块
+- image_trasfer 利用numpy对图片进行转换
