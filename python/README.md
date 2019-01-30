@@ -64,3 +64,4 @@
 - texi_simulation  出租车 运营仿真系统` 
 - compare_thread_asyncio  对比thread和acyncio模块
 - image_trasfer 利用numpy对图片进行转换
+- heart     使用curses在控制台绘图
