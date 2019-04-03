@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # @Filename: myasyncio.py
 # @Author: olenji - lionhe0119@hotmail.com
 # @Description: ---
@@ -9,14 +9,24 @@
 
 
 import asyncio
-import time, datetime
+import datetime
+import time
+
 
 async def say_after(delay, what):
+    """
+
+    :param delay:
+    :param what:
+    """
     await asyncio.sleep(delay)
     print(what)
 
 
 async def main():
+    """
+        test
+    """
     print(f"started at {time.strftime('%X')}")
 
     res = await say_after(1, 'hello')
@@ -28,6 +38,10 @@ async def main():
 
 # ----------
 async def display_date():
+    """
+        test
+
+    """
     loop = asyncio.get_running_loop()
     end_time = loop.time() + 5.0
     while True:
@@ -36,5 +50,15 @@ async def display_date():
             break
         await asyncio.sleep(1)
 
-#asyncio.run(display_date())
+
+async def run_lot_sub_coroutines():
+    await asyncio.gather(
+        asyncio.sleep(10),
+        asyncio.sleep(8)
+    )
+    print(1)
+
+
+if __name__ == "__main__":
+    asyncio.run(run_lot_sub_coroutines())
 # ------------

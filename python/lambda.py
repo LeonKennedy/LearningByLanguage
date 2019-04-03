@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # @Filename: lambda.py
 # @Author: olenji - lionhe0119@hotmail.com
 # @Description: 闭包
@@ -7,22 +7,24 @@
 # @Last Modified: 2017-04-20 17:35:45
 #
 
-import re
-
 def outer(a):
-  def inner(b):
-    return max(a) * b    
-  return inner
+    def inner(b):
+        return max(a) * b
 
-bf = outer([1,2,3])
+    return inner
+
+
+bf = outer([1, 2, 3])
 x = bf(2)
 print(x)
 
+c = [1, 2, 3, 4]
 
-c = [1,2,3,4]
+
 def single(a):
-  return a
+    return a
 
-cf = lambda : single(4)
+
+cf = lambda: single(4)
 x = cf()
 print(x)
