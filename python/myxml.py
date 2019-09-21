@@ -66,7 +66,7 @@ class ExcelProcess(object):
         dest_filename = 'empty_book.xlsx'
         
         ws1 = wb.active
-        ws1.title = "range names"
+     from openpyxl import load_workbook   ws1.title = "range names"
         
         for row in range(1, 40):
             ws1.append([1,2,3,4,5])

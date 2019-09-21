@@ -1,15 +1,17 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # @Filename: multiprocess.py
 # @Author: olenji - lionhe0119@hotmail.com
 # @Description: ---
 # @Create: 2018-11-30 17:48:42
 # @Last Modified: 2018-11-30 17:48:42
 #
-import multiprocessing, pdb, time
+import multiprocessing
+import time
 
 # 定义全局变量Queue
 g_queue = multiprocessing.Queue()
+
 
 def init_queue():
     print("init g_queue start")
@@ -19,6 +21,7 @@ def init_queue():
         g_queue.put(_index)
     print("init g_queue end")
     return
+
 
 def task_io(task_id):
     print("IOTask[%s] start" % task_id)
@@ -32,14 +35,15 @@ def task_io(task_id):
     print("IOTask[%s] end" % task_id)
 
 
-
 g_search_list = list(range(10000))
-def task_cpu(task_id):
+
+
+def task_cpu(task_id=5):
     print("CPUTask[%s] start" % task_id)
     while not g_queue.empty():
         count = 0
         for i in range(10000):
-            count += pow(3*2, 3*2) if i in g_search_list else 0
+            count += pow(3 * 2, 3 * 2) if i in g_search_list else 0
         try:
             data = g_queue.get(block=True, timeout=1)
             print("CPUTask[%s] get data: %s" % (task_id, data))
@@ -61,7 +65,8 @@ def main():
     print("========== 多进程执行cpu密集型任务 ==========")
     init_queue()
     time_0 = time.time()
-    process_list = [multiprocessing.Process(target=task_cpu, args=(i,)) for i in range(multiprocessing.cpu_count())]
+
+    process_list = [multiprocessing.Process(target=task_cpu) for i in range(multiprocessing.cpu_count())]
     for p in process_list:
         p.start()
     for p in process_list:
@@ -69,6 +74,7 @@ def main():
             p.join()
 
     print("结束：", time.time() - time_0, "\n")
-    
+
+
 if __name__ == "__main__":
     main()

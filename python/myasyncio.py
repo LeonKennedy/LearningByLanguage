@@ -43,7 +43,7 @@ async def display_date():
 
     """
     loop = asyncio.get_running_loop()
-    end_time = loop.time() + 5.0
+    end_time = loop.time() + 10.0
     while True:
         print(datetime.datetime.now())
         if (loop.time() + 1.0) >= end_time:
@@ -51,14 +51,31 @@ async def display_date():
         await asyncio.sleep(1)
 
 
+def run_without_check():
+    task = asyncio.create_task(display_date())
+    return 
+
+
+async def block_sleep():
+    num = 0
+    while 1:
+        await asyncio.sleep(5)
+        num += 1
+        print(f'{num} block sleep(10) ')
+
+
 async def run_lot_sub_coroutines():
+    
+    run_without_check() 
     await asyncio.gather(
-        asyncio.sleep(10),
+        block_sleep(),
         asyncio.sleep(8)
     )
+    lps = asyncio.get_event_loop()
     print(1)
 
 
 if __name__ == "__main__":
+    #asyncio.run(display_date())
     asyncio.run(run_lot_sub_coroutines())
-# ------------
+
