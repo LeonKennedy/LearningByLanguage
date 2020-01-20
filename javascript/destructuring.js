@@ -30,8 +30,8 @@ let { fooa, bara } = { foo: 'aaa', bar: 'bbb' };
 let {foob} = {bar: 'baz'}; // ¦pªG¸ÑÌÛ¥¢? ­È? undefined
 
 // ¦pªG‰Z¶q¦WÉO˜í©Ê¦W¤£¦P
-let obj = { first: 'hello', last: 'world' };
-let { first: f, last: l } = obj;   // first ¬O¤Ç°t¼Ò¦¡ f¬O‰Z¶q
+let obj = { left: 'hello', last: 'world' };
+let { left: f, last: l } = obj;   // first ¬O¤Ç°t¼Ò¦¡ f¬O‰Z¶q
 
-let {0 : first, [arr.length - 1] : last} = arr;
+let {0 : uno, [arr.length - 1] : last} = arr;
 const [a, b, c, d, e] = 'hello';

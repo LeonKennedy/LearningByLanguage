@@ -7,9 +7,10 @@ function sub(a, b) {
     console.log(a - b);
 }
 
-add.call(sub, 3, 1);
+add.call(()=> {console.log(44)}, 2,1);
+add.call(sub, 3, 1);  // 2¡A  4
 
-
+// ======= 
 function Animal() {
     this.name = "animal";
     this.showName = function () {
@@ -33,8 +34,8 @@ function BlackCat(name) {
     Animal.call(this, name);
 }
 
-var cat = new BlackCat("black cat");
-cat.showName();
+var bcat = new BlackCat("black cat");
+bcat.showName();
 
 var animals = [
   {species: 'Lion', name: 'King'},
