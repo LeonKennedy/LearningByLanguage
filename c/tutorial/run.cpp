@@ -6,13 +6,17 @@
  */
 #include "ComplexType.cpp"
 #include "pointer.cpp"
+#include "textin.cpp"
+#include "ofstream.cpp"
 
 int main()
 {
     // PointerShow();
     // PointerArithmetic();
     // CombineType();
-    plusplus();
+    // plusplus();
+    // TextInShow();
+    fileInOut();
     // ComplexShow();
     return 0;
 }
