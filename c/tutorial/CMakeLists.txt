@@ -18,4 +18,5 @@ add_library(LimitFunctions typecast.cpp)
 include_directories ("${PROJECT_SOURCE_DIR}/LimitFunctions")
 
 #add_executable(Limit limits.cpp)
-add_executable(TypeCast typecast.cpp)
+#add_executable(TypeCast typecast.cpp)
+add_executable(Run run.cpp)
