@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.5.1)
 
 project(tutorial)
 message("start my cmake file")
+message("CMAKE_SOURCE_DIR=" ${CMAKE_SOURCE_DIR})
+message("PROJECT_SOURCE_DIR=" ${PROJECT_SOURCE_DIR})
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,10 +15,13 @@ configure_file (
 )
 
 include_directories("${PROJECT_SOURCE_DIR}")
+include_directories("${PROJECT_SOURCE_DIR}/reference/include")
 
-add_library(LimitFunctions typecast.cpp)
-include_directories ("${PROJECT_SOURCE_DIR}/LimitFunctions")
+# --- reference ---
+# add_subdirectory(reference)
+link_directories(${CMAKE_SOURCE_DIR}/reference/build)
 
-#add_executable(Limit limits.cpp)
-#add_executable(TypeCast typecast.cpp)
 add_executable(Run run.cpp)
+TARGET_LINK_LIBRARIES(Run reference)
+
+

@@ -2,7 +2,7 @@
  * @Author: LeonSccotKennedy 
  * @Date: 2020-07-19 22:03:01 
  * @Last Modified by: LeonSccotKennedy
- * @Last Modified time: 2020-07-19 22:38:14
+ * @Last Modified time: 2020-07-27 18:19:44
  */
 #include <iostream>
 #include <string>
@@ -31,7 +31,8 @@ void PassParamsMethod()
 
 void show_array(int x[], int size)
 {
-    cout << "show point("<< x <<") iterator, size: " << sizeof(x) << endl;
+    int l = sizeof(x);
+    cout << "show point("<< x <<") iterator, size: " << l << endl;
     for (int i=0; i < size; i++) {
         cout << x[i] << ' ';
     }
