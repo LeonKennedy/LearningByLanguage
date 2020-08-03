@@ -1,5 +1,4 @@
 #include <iostream>
-#include "CmakeConfig.h"
 
 void showCmakeConfig()
 {

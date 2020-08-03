@@ -16,6 +16,9 @@ class Stack
         bool push(const Item & item);
         bool pop(Item & item);
         void show() const;
+        void operator + (Item & item);
+        friend void operator + (Item & item, Stack & s);
+        friend std::ostream & operator << (std::ostream & os, const Stack & s);
 
 };
 

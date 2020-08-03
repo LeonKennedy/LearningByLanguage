@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall")
 
 #link_directories(${PROJECT_SOURCE_DIR}/static_lib)
+configure_file (
+    "${PROJECT_SOURCE_DIR}/CmakeConfig.h.in"
+    "${PROJECT_SOURCE_DIR}/CmakeConfig.h"
+)
 
 include_directories(${PROJECT_SOURCE_DIR}/static_lib/include)
 find_library(hello libhello.a ${PROJECT_SOURCE_DIR}/static_lib/build/ REQUIRED)

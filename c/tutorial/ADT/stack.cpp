@@ -42,3 +42,20 @@ void Stack::show() const
     }
     std::cout << std::endl;
 }
+
+void Stack::operator+ (Item & item)
+{
+    this->push(item);
+}
+
+void operator + (Item & m, Stack & s)
+{
+    s.push(m);
+}
+
+std::ostream & operator << (std::ostream & os, const Stack & s)
+{
+    for (int i = 0; i < s.top; i++) 
+        os << s.items[i] << '\t';
+    return os;
+}

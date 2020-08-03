@@ -16,12 +16,19 @@
 # clean:
 # rm edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o
 
+CC=clang++
 edit: run.o stack.o
-	clang++ run.o stack.o -o edit 
+	c++ run.o stack.o -o edit
 
-run.o: stack.hpp
-stack.o: stack.hpp
+other: %.o
+	@echo $<
+	c++ $< -o other
+
+
+# run.o: stack.hpp
+# stack.o: stack.hpp
 
 .PHONY: clean
 clean:
 	-rm edit run.o stack.o
+

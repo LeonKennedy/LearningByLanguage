@@ -9,11 +9,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall")
 
-configure_file (
-    "${PROJECT_SOURCE_DIR}/CmakeConfig.h.in"
-    "${PROJECT_SOURCE_DIR}/CmakeConfig.h"
-)
-
 include_directories("${PROJECT_SOURCE_DIR}")
 include_directories("${PROJECT_SOURCE_DIR}/reference/include")
 
