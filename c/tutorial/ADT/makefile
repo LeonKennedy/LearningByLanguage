@@ -17,8 +17,8 @@
 # rm edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o
 
 CC=clang++
-edit: run.o stack.o
-	c++ run.o stack.o -o edit
+edit: run.o stack.o vector.o
+	c++ run.o stack.o vector.o -o edit
 
 other: %.o
 	@echo $<

@@ -22,4 +22,5 @@ class Stack
 
 };
 
+void play();
 #endif
