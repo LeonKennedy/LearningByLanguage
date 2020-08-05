@@ -32,7 +32,7 @@ namespace VECTOR
             void polar_mode();
             void rect_mode();
 
-            Vector operator + (const Vector & b) const;
+            const Vector operator + (const Vector & b) const;
             Vector operator - (const Vector & b) const;
             Vector operator - () const;
             Vector operator * (double n) const;
@@ -43,5 +43,7 @@ namespace VECTOR
     };
 
     void randwalk();
+    void play();
+    const Vector & Max(const Vector & v1, const Vector & v2);
 }
 #endif

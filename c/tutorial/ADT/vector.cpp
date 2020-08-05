@@ -85,7 +85,7 @@ namespace VECTOR
         mode = RECT;
     }
 
-    Vector Vector::operator + (const Vector & b) const 
+    const Vector Vector::operator + (const Vector & b) const 
     {
         return Vector(x + b.x, y+ b.y);
     }
@@ -121,14 +121,21 @@ namespace VECTOR
             os << "Vector object mode is invalid";
         return os;
     }
-    //         enum Mode {RECT, POL};
-    //     private:
-    //         double x;
-    //         double y;
-    //         double mag;
-    //         double ang;
-    //         Mode mode;
 
+    const Vector & Max(const Vector & v1, const Vector & v2)
+    {
+        if (v1.magval() > v2.magval())
+            return v1;
+        else
+            return v2;
+    }
+
+    void play()
+    {
+        Vector force1(50, 60);
+        Vector force2(30, 40);
+        const Vector net = Max(force1 ,force2);
+    }
     // N  = (D/S)^2
     void randwalk() 
     {

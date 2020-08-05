@@ -17,18 +17,24 @@
 # rm edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o
 
 CC=clang++
+objs = run.o stack.o vector.o stringbad.o
+
+all: $(objs)
+	c++ $(objs) -o $@
+	-rm $< 
+
 edit: run.o stack.o vector.o
 	c++ run.o stack.o vector.o -o edit
-
-other: %.o
-	@echo $<
-	c++ $< -o other
+	-rm run.o vector.o stack.o
 
 
+
+$(objs): %.o : %.cpp
+	c++ -c $< -o $@
 # run.o: stack.hpp
 # stack.o: stack.hpp
 
 .PHONY: clean
 clean:
-	-rm edit run.o stack.o
+	-rm edit ${objs}
 

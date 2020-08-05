@@ -1,12 +1,16 @@
 #include <iostream>
 #include "stack.hpp"
 #include "vector.hpp"
+#include "stringbad.hpp"
 
 
 
 int main()
 {
     // play();
-    VECTOR::randwalk();
+    // VECTOR::randwalk();
+    // play_string_bad();
+    VECTOR::play();
+    std::cout << " ===  end === " << std::endl;
     return 0;
 }
