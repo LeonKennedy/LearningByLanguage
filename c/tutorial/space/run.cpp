@@ -11,6 +11,6 @@
 int main()
 {
     // exp1();
-    ExpNewPlace();
+    ExpNewPlace2();
     return 0;
 }

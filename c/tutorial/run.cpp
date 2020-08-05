@@ -18,12 +18,12 @@ int main()
     // PointerArithmetic();
     // CombineType();
     // plusplus();
-    // TextInShow();
+    TextInShow();
     // fileInOut();
     // PassParamsMethod();
     // show_function_point();
     // ComplexShow();
     // TwoSwapExp();
-    exp_static();
+    // exp_static();
     return 0;
 }

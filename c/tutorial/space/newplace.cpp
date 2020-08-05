@@ -1,6 +1,7 @@
 #include <iostream>
 #include <new>
 #include "newplace.hpp"
+#include "JustTesing.hpp"
 
 const int BUF = 512;
 const int N = 5;
@@ -43,4 +44,38 @@ void show_memory(double * p1, double *p2, double inc)
         cout << '\t' << p1[i] << "\at " << &p1[i] << ";";
         cout << '\t' << p2[i] << " at " << &p2[i] << endl;
     }
+}
+
+void ExpNewPlace2()
+{
+    char * buffer = new char[BUF];
+    JustTesting *pc1, *pc2;
+    
+    pc1 = new (buffer) JustTesting;
+    pc2 = new JustTesting("Heap1", 20);
+
+    cout << "Memory block addresses: \n" << "buffer: " << (void *) buffer;
+    cout << " pure buffer: " << buffer;
+    cout << "  heap: " << pc2 << endl;
+    cout << "Memory contents: \n";
+    cout << pc1 << ": ";
+    pc1->show();
+    cout << pc2 << ": ";
+    pc2->show();
+
+    JustTesting *pc3, *pc4;
+    pc3 = new (buffer + sizeof(JustTesting)) JustTesting("Bad Idea", 6);
+    pc4 = new JustTesting("Heap2", 10);
+    cout << " pure buffer: " << buffer << endl;
+    cout << "Memory contents:\n" << pc3 << ": " ;
+    pc3->show();
+    cout << pc4 << ": " ;
+    pc4->show();
+
+    delete pc2;
+    delete pc4;
+    pc3->~JustTesting();
+    pc1->~JustTesting();
+    delete [] buffer;
+    cout << "Bye" << endl;
 }

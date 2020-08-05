@@ -9,6 +9,7 @@ StringBad::StringBad()
     len = 0;
     ar = new char[len + 1];
     ar[0] = '\0';
+    num_strings++;
 }
 
 StringBad::StringBad(const char * s)
@@ -17,7 +18,7 @@ StringBad::StringBad(const char * s)
     ar = new char[len + 1];
     std::strcpy(ar, s);
     num_strings++;
-    cout << num_strings << ": <" << ar << "> object created\n";
+    cout << num_strings << ": <" << ar << "> object created by char*\n";
 }
 
 StringBad::StringBad(StringBad & sb)
@@ -36,6 +37,11 @@ StringBad::~StringBad()
     delete [] ar;
 }
 
+int StringBad::length()
+{
+    return len;
+}
+
 StringBad & StringBad::operator = (const StringBad & sb)
 {
     if (this == &sb)
@@ -44,8 +50,7 @@ StringBad & StringBad::operator = (const StringBad & sb)
     len = sb.len;
     ar = new char[len + 1];
     std::strcpy(ar, sb.ar);
-    num_strings++;
-    cout << num_strings << ": <" << ar << "> object created\n";
+    cout << num_strings << ": <" << ar << "> object created by assign\n";
     return *this;
 }
 
@@ -63,6 +68,11 @@ std::ostream & operator << (std::ostream & os, const StringBad & sb)
 {
     os << sb.ar;
     return os;
+}
+std::istream & operator >> (std::istream & is, const StringBad & sb)
+{
+    is >> sb.ar;
+    return is;
 }
 
 bool operator == (const StringBad & sb1, const StringBad & sb2)
@@ -123,6 +133,43 @@ void play_string_bad() {
     cout << answer[2] <<  endl;
 
     knot = "hell olenji";
+}
+
+void saying()
+{
+    using namespace std;
+    const int ArSize = 10;
+    const int MaxLen = 81;
+    // StringBad sayings[ArSize] = {
+    //     StringBad("ccdsadfe"), 
+    //     StringBad("ccbbb aaaadsadfe"), 
+    //     StringBad("sdfaefv sdafe")
+    // };
+
+    StringBad sayings[ArSize];
+
+    const int total = 3;
+    char * dfe[total] =  {"ccdsadfe","ccbbb aaaadsadfe",  "sdfaefv sdafe"};
+    cout << "Here are your sayings: \n";
+    for (int i = 0; i < total; i++) {
+        sayings[i] = dfe[i];
+        cout << sayings[i] << endl;
+    }
+
+    StringBad * shortest = &sayings[0];
+    StringBad * first = &sayings[1];
+    for (int j = 1; j < total; j++) {
+        if (sayings[j].length() < shortest[j].length()) 
+            shortest = &sayings[j];
+        if (sayings[j] < *first) 
+            first = &sayings[j];
+    }
+
+    srand(time(0));
+    int choice = rand() % total;
+    StringBad * favorite = new StringBad(sayings[choice]);
+    delete favorite;
+    cout << "Bye!" << endl;
 }
 
 

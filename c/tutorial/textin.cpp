@@ -3,14 +3,15 @@
 void TextInShow()
 {
     using namespace std;
-    char ch;
+    const int Size = 20;
+    char ch[80];
     int count;
-    cin.get(ch);
+    cin >> ch;
     while (cin.fail() == false)
     {
         cout << ch;
         ++count;
-        cin.get(ch);
+        cin.get(ch, Size);
     }
     cout << endl << count << " characters read\n";
     

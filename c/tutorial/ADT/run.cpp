@@ -10,7 +10,8 @@ int main()
     // play();
     // VECTOR::randwalk();
     // play_string_bad();
-    VECTOR::play();
+    // VECTOR::play();
+    saying();
     std::cout << " ===  end === " << std::endl;
     return 0;
 }
