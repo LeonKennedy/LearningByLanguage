@@ -19,7 +19,7 @@
 CC=clang++
 objs = run.o stack.o vector.o stringbad.o Queue.o
 
-all: $(objs)
+run: $(objs)
 	c++ $(objs) -o $@
 	-rm $< 
 

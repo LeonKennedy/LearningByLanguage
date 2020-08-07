@@ -1,6 +1,6 @@
 
 
-obj = WebtownClub.o run.o
+obj = WebtownClub.o run.o Students.o
 cc = clang++
 run: $(obj)
 	c++ $(obj) -o $@
