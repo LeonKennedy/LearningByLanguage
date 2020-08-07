@@ -2,6 +2,7 @@
 #include "stack.hpp"
 #include "vector.hpp"
 #include "stringbad.hpp"
+#include "Queue.hpp"
 
 
 
@@ -11,7 +12,8 @@ int main()
     // VECTOR::randwalk();
     // play_string_bad();
     // VECTOR::play();
-    saying();
+    // saying();
+    QUEUE::customer_montecario();
     std::cout << " ===  end === " << std::endl;
     return 0;
 }

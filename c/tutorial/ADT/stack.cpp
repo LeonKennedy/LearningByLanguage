@@ -1,6 +1,7 @@
 #include <iostream>
 #include "stack.hpp"
 
+namespace STACK {
 Stack::Stack()
 {
     top = 0;
@@ -74,4 +75,5 @@ void play()
     stk.pop(item);
     std::cout << item << std::endl;
     stk.show();
+}
 }
