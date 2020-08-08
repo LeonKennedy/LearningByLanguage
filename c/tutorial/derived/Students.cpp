@@ -29,7 +29,7 @@ namespace STUDENT
     {
         os << (const string &)s << "\t scores: ";
         s.arr_out(os);
-        os << endl;
+        os << " Max: " << s.max() << " Min: " << s.min() << endl;
         return os;
     }
 

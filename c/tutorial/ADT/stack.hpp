@@ -3,12 +3,12 @@
 
 namespace STACK
 {
-    typedef unsigned long Item;
+    template <typename T>
     class Stack
     {
         private:
             enum {MAX=10};
-            Item items[MAX];
+            T items[MAX];
             int top;
         public:
             Stack();

@@ -2,23 +2,26 @@
 #include "stack.hpp"
 
 namespace STACK {
-Stack::Stack()
+template <typename T>
+Stack<T>::Stack()
 {
     top = 0;
 }
 
-bool Stack::isempty() const
+template <typename T>
+bool Stack<T>::isempty() const
 {
     return top == 0;
 }
 
-
-bool Stack::isfull() const
+template <typename T>
+bool Stack<T>::isfull() const
 {
     return top == MAX;
 }
-        
-bool Stack::push(const Item & item)
+
+template <typename T>        
+bool Stack<T>::push(const T & item)
 {
     if (top < MAX) {
         items[top++] = item;
@@ -26,8 +29,9 @@ bool Stack::push(const Item & item)
     }else
         return false;
 }
-        
-bool Stack::pop(Item & item)
+
+template <typename T>
+bool Stack<T>::pop(T & item)
 {
     if (top > 0) {
         item = items[--top];
@@ -36,7 +40,8 @@ bool Stack::pop(Item & item)
         return false;
 }
 
-void Stack::show() const
+template <typename T>
+void Stack<T>::show() const
 {
     for (int i = 0; i < top; i++) {
         std::cout << items[i] << '\t';
@@ -44,17 +49,20 @@ void Stack::show() const
     std::cout << std::endl;
 }
 
-void Stack::operator+ (Item & item)
+template <typename T>
+void Stack<T>::operator+ (T & item)
 {
     this->push(item);
 }
 
-void operator + (Item & m, Stack & s)
+template <typename T>
+void operator + (T & m, Stack<T> & s)
 {
     s.push(m);
 }
 
-std::ostream & operator << (std::ostream & os, const Stack & s)
+template <typename T>
+std::ostream & operator << (std::ostream & os, const Stack<T> & s)
 {
     for (int i = 0; i < s.top; i++) 
         os << s.items[i] << '\t';
@@ -63,15 +71,15 @@ std::ostream & operator << (std::ostream & os, const Stack & s)
 
 void play()
 {
-    Stack stk;
+    Stack<double> stk;
     stk.push(2.0);
     stk.push(3.0);
-    Item i1 = 4;
+    double i1 = 4;
     stk + i1;
-    Item i2 = 52342;
+    double i2 = 52342;
     i2 + stk;
     std::cout << stk << std::endl;
-    Item item;
+    double item;
     stk.pop(item);
     std::cout << item << std::endl;
     stk.show();

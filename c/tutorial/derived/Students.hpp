@@ -11,6 +11,8 @@ namespace STUDENT
             typedef std::valarray<double> ArrayDb;
             std::ostream & arr_out(std::ostream & os) const;
         public:
+            using ArrayDb::min;
+            using ArrayDb::max;
             Student(const double *pd, const char * str = "coffee", int s = 5) : std::string(str), ArrayDb(pd, s) {}
             Student(): std::string("Null") , ArrayDb() {}
             explicit Student (int n): std::string("Null"), ArrayDb(n) {}
