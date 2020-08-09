@@ -23,6 +23,7 @@ run: $(objs)
 	c++ $(objs) -o $@
 	-rm $< 
 
+
 # edit: run.o stack.o vector.o
 # 	c++ run.o stack.o vector.o -o edit
 # 	-rm run.o vector.o stack.o
@@ -33,7 +34,7 @@ run: $(objs)
 # run.o: stack.hpp
 # stack.o: stack.hpp
 
-.PHONY: clean
+# .PHONY: clean
 clean:
-	-rm all $(objs)
+	-rm run $(objs)
 

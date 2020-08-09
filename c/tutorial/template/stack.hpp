@@ -1,32 +1,28 @@
-#ifndef STACK_H_
-#define STACK_H_
+#ifndef STACKTP_H_
+#define STACKTP_H_
 
-namespace STACK
-{
     template <typename T>
     class Stack
     {
         private:
-            int size;
-            T * items;
+            const static int size = 10;
+            T items[size];
             int top;
         public:
             Stack();
-            Stack(const int s);
             ~Stack();
-            Stack(const Stack &);
+            // Stack(const Stack &);
             bool isempty() const;
             bool isfull() const;
             bool push(const T & item);
-            T & pop();
-            void show() const;
-            Stack & operator=(const Stack &);
+            bool pop(T & item);
+            // void show() const;
+            // Stack & operator=(const Stack &);
             // void operator + (T & item);
             // friend void operator + (T & item, Stack<T> & s);
             // friend std::ostream & operator << (std::ostream & os, const Stack<T> & s);
+            
     };
-
     void play();
-}
 
 #endif
