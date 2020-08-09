@@ -8,12 +8,12 @@
 
 int main()
 {
-    STACK::play();
+    // STACK::play();
     // VECTOR::randwalk();
     // play_string_bad();
     // VECTOR::play();
     // saying();
-    // QUEUE::customer_montecario();
+    QUEUE::customer_montecario();
     std::cout << " ===  end === " << std::endl;
     return 0;
 }

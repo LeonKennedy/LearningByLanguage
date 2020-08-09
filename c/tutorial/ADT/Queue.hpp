@@ -22,17 +22,16 @@ class Customer
         friend std::ostream & operator << (std::ostream &, const Customer &);
 };
 
-typedef Customer Item;
-
+template <class T>
 class Queue
 {
     private:
         class Node
         {
             public:
-                Item item;
+                T item;
                 Node * p_next;
-                Node(const Item & i) : item(i), p_next(0) {}
+                Node(const T & i) : item(i), p_next(nullptr) {}
         };
         Node * front;
         Node * rear;
@@ -41,11 +40,11 @@ class Queue
     public:
         Queue(int qs = 10);
         ~Queue();
-        bool is_empty() const;
-        bool is_full() const;
+        bool is_empty() const { return items==0 ;}
+        bool is_full() const {return items == qsize;}
         int length() const {return items;};
-        bool append(const Item &);
-        bool leftpop(Item &item);
+        bool append(const T &);
+        bool leftpop(T &item);
         void show() const;
 };
 

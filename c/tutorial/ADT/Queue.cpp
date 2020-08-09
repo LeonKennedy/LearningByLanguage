@@ -15,13 +15,15 @@ std::ostream & operator << (std::ostream & os,const Customer & c)
     return os;
 }
 
-Queue::Queue(int qs): qsize(qs) , items(0)
+template <typename T>
+Queue<T>::Queue(int qs): qsize(qs) , items(0)
 {
     front = nullptr;
     rear = nullptr;
 }
 
-Queue::~Queue()
+template <typename T>
+Queue<T>::~Queue()
 {
     Node * p;
     while (front != nullptr) {
@@ -31,17 +33,9 @@ Queue::~Queue()
     }
 }
 
-bool Queue::is_empty() const
-{
-    return (items == 0);
-}
 
-bool Queue::is_full() const
-{
-    return (items == qsize);
-}
-
-bool Queue::append(const Item & item)
+template <typename T>
+bool Queue<T>::append(const T & item)
 {
     if (is_full())
         return false;
@@ -56,7 +50,8 @@ bool Queue::append(const Item & item)
     return true;
 }
 
-bool Queue::leftpop(Item & item)
+template <typename T>
+bool Queue<T>::leftpop(T & item)
 {
     if (is_empty())
         return false;
@@ -70,7 +65,8 @@ bool Queue::leftpop(Item & item)
     return true;
 }
 
-void Queue::show() const
+template <typename T>
+void Queue<T>::show() const
 {
     Node * p = front;
     while (p != nullptr) {
@@ -90,11 +86,11 @@ void customer_montecario()
     using namespace std;
     srand(time(0));
     cout << "Case Study: Bank of Heather Automatic Teller\n";
-    Queue line(20);
+    Queue<Customer> line(20);
     int hours = 2;
     double min_per_cust = 60;
     double cyclelimit = min_per_cust * hours;
-    Item temp;
+    Customer temp;
     long turnaways = 0;
     long customers = 0;
     long served = 0;
