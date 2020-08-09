@@ -27,10 +27,12 @@ typedef Customer Item;
 class Queue
 {
     private:
-        struct Node
+        class Node
         {
-            Item item;
-            struct Node * p_next;
+            public:
+                Item item;
+                Node * p_next;
+                Node(const Item & i) : item(i), p_next(0) {}
         };
         Node * front;
         Node * rear;

@@ -45,9 +45,7 @@ bool Queue::append(const Item & item)
 {
     if (is_full())
         return false;
-    Node * add = new Node;
-    add->item = item;
-    add->p_next = nullptr;
+    Node * add = new Node(item);
     items++;
     if (front == nullptr)
         front = add;
