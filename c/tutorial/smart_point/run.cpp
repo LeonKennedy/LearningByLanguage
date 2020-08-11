@@ -4,11 +4,13 @@
 int main()
 {
     {
-        std::shared_ptr<Report> ps(new Report("auto_ptr"));
+        // reference counting
+        std::shared_ptr<Report> ps(new Report("shared_ptr"));
         ps->comment();
     }
     {
-        std::unique_ptr<Report> ps(new Report("auto_ptr"));
+        // ownership
+        std::unique_ptr<Report> ps(new Report("unique_ptr"));
         ps->comment();
     }
     return 0;
