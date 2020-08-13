@@ -7,3 +7,4 @@
 + space    new的使用
 + friend  友元
 + template  模版
++ generic  范型编程
