@@ -7,6 +7,7 @@ int main()
     // play_insert_iter();
     // play_list_iter();
     // play_new_container();
-    play_set();
+    // play_set();
+    play_funadap();
     // play_operator();
 }

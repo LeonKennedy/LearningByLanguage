@@ -6,6 +6,7 @@
 #include <forward_list>
 #include <queue>
 #include <set>
+#include <functional>
 #include "iter.hpp"
 
 void play_ostream_iter()
@@ -132,5 +133,26 @@ void play_set()
     cout << endl << "showing a range:\n";
     copy(C.lower_bound("bhost"), C.upper_bound("spool"), out);
     cout << endl;
+}
+
+void play_funadap()
+{
+    using namespace std;
+    ostream_iterator<double, char> out(cout, " ");
+    const int LIM = 6;
+    double arr1[LIM] {28,29,30,35,38,59};
+    double arr2[LIM] {63,64,69,75,80,99};
+    copy(arr1, arr1 + LIM, out);
+    
+    vector<double> sum(LIM);
+    transform(arr1, arr1+LIM, arr2, arr2+LIM, plus<double>());
+    cout << endl;
+    copy(arr1, arr1 + LIM, out);
+    cout << endl;
+
+    vector<double> gr8(arr1, arr1+LIM);
+    vector<double> prod(LIM);
+    transform(gr8.begin(), gr8.end(), prod.begin(), bind1st(multiplies<double> (), 2.5));
+    
 
 }
