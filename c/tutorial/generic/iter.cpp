@@ -142,17 +142,16 @@ void play_funadap()
     const int LIM = 6;
     double arr1[LIM] {28,29,30,35,38,59};
     double arr2[LIM] {63,64,69,75,80,99};
+    vector<double> gr8(arr1, arr1+LIM);
+
     copy(arr1, arr1 + LIM, out);
     
     vector<double> sum(LIM);
-    transform(arr1, arr1+LIM, arr2, arr2+LIM, plus<double>());
+    transform(gr8.begin(), gr8.end(), arr2, out, plus<double>());
     cout << endl;
     copy(arr1, arr1 + LIM, out);
     cout << endl;
 
-    vector<double> gr8(arr1, arr1+LIM);
-    vector<double> prod(LIM);
-    transform(gr8.begin(), gr8.end(), prod.begin(), bind1st(multiplies<double> (), 2.5));
-    
-
+    // vector<double> prod(LIM);
+    // transform(gr8.begin(), gr8.end(), prod.begin(), bind1st(multiplies<double> (), 2.5));
 }
