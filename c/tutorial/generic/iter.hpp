@@ -5,3 +5,6 @@ void play_new_container();
 void play_set();
 
 void play_funadap();
+void play_transfrom();
+void play_valarray();
+void play_slice();

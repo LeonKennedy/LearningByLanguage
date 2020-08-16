@@ -7,6 +7,8 @@
 #include <queue>
 #include <set>
 #include <functional>
+#include <map>
+#include <valarray>
 #include "iter.hpp"
 
 void play_ostream_iter()
@@ -21,7 +23,7 @@ void play_ostream_iter()
 }
 
 template <typename T>
-void output(T & n) {std::cout << n << " ";}
+void output(const T & n) {std::cout << n << " ";}
 
 void play_insert_iter()
 {
@@ -154,4 +156,68 @@ void play_funadap()
 
     // vector<double> prod(LIM);
     // transform(gr8.begin(), gr8.end(), prod.begin(), bind1st(multiplies<double> (), 2.5));
+}
+
+std::string & ToLower(std::string & s)
+{
+    std::transform(s.begin(), s.end(), s.begin(), tolower);
+    return s;
+}
+
+void  play_transfrom()
+{
+    using namespace std;
+    vector<string> words {"sfjie", "jiei", "qpjg"};
+    for_each(words.begin() , words.end(), output<string>);
+
+    set<string> wordset;
+    transform(words.begin(), words.end(), 
+        insert_iterator<set<string> >(wordset, wordset.begin()), ToLower);
+    cout << "\nAlphabetic list of words:\n";
+    for_each(wordset.begin() , wordset.end(), output<string>);
+
+    map<string, int> wordmap;
+    set<string>::iterator si;
+    for(si = wordset.begin(); si!=wordset.end(); si++)
+        wordmap[*si] = count(words.begin(), words.end(), *si);
+
+    cout << "\nWord frequence:\n";
+    for(si = wordset.begin(); si!=wordset.end(); si++)
+        cout << *si << ": " << wordmap[*si] << endl;
+
+
+}
+
+void play_valarray()
+{
+    using namespace std;
+    vector<double> data {3,4,56,2,4,2,6,6,47};
+    sort(data.begin(), data.end());
+    int size = data.size();
+    valarray<double> numbers(size);
+    copy(data.begin(), data.end(), begin(numbers));
+    for_each(begin(numbers), end(numbers), output<double>);
+    cout << endl;
+    valarray<double> sq_rts(size);
+    sq_rts = sqrt(numbers);
+    cout.precision(4);
+    for_each(begin(sq_rts), end(sq_rts), output<double>);
+    cout << endl;
+}
+
+typedef std::valarray<int> vint;
+void play_slice()
+{
+    using namespace std;
+    vint numbres(20);
+    numbres = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+    numbres[slice(0,4,3)] = -1;
+    for_each(begin(numbres), end(numbres), output<int>);
+    vint vcol(numbres[slice(1,4,2)]);
+    cout << "\nUse slice: \n";
+    for_each(begin(vcol), end(vcol), output<double>);
+    cout << "\n Set first columns to sum next two:\n";
+    numbres[slice(0,4,3)] = vint(numbres[slice(1,4,3)]) + vint(numbres[slice(2,4,3)]);
+    for_each(begin(numbres), end(numbres), output<int>);
+    cout << endl;
 }
