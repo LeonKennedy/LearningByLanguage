@@ -8,9 +8,11 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall")
 
 include_directories(include)
 add_library(reference  
+move_semantics.cpp 
 example.cpp
+rightvalref.cpp 
 twoswap.cpp
-rightvalref.cpp)
+)
 
 add_executable(run run.cpp)
 TARGET_LINK_LIBRARIES(run reference)
