@@ -2,7 +2,7 @@
  * @Author: LeonSccotKennedy 
  * @Date: 2020-08-22 14:43:48 
  * @Last Modified by: LeonSccotKennedy
- * @Last Modified time: 2020-08-22 14:57:31
+ * @Last Modified time: 2020-08-22 15:21:46
  */
 #include "func.hpp"
 #include <iostream>
@@ -22,14 +22,10 @@ int main(int argc, char const *argv[])
 
     std::cout << " ====  use wrapper for all ====" << std::endl;
     std::cout << "只初始化一次" << std::endl;
-    std::function<double(double &) > ef1 = dub;
-    std::function<double(double &) > ef2 = sqr;
-    std::function<double(double &) > ef3 = [](double & x){ return x*x;};
-    std::function<double(double &) > ef4 = lamdub;
-
-    std::cout << use_f(y, ef1) << std::endl;
-    std::cout << use_f(y, ef2) << std::endl;
-    std::cout << use_f(y, ef3) << std::endl;
-    std::cout << use_f(y, ef4) << std::endl;
+    typedef std::function<double(double &) > eff;
+    std::cout << use_f(y, eff(dub)) << std::endl;
+    std::cout << use_f(y, eff(sqr)) << std::endl;
+    std::cout << use_f(y, eff([](double & x){ return x*x;})) << std::endl;
+    std::cout << use_f(y, eff(lamdub)) << std::endl;
     return 0;
 }
