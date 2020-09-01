@@ -20,31 +20,35 @@ class SmartPtr
     public:
         template <typename U>
         friend class SmartPtr;
-        explicit SmartPtr(T * p=nullptr)
-            : ptr_(p) 
+        explicit SmartPtr(T * p=nullptr) noexcept
+            : ptr_(p)  
         {
             if (p) {
                 shared_cout_ = new UseCount;
             }
         }
-        template <typename U>
-        SmartPtr(SmartPtr<U>&);
-        SmartPtr(SmartPtr&&);
-        template <typename U>
-        SmartPtr(const SmartPtr<U>&, T*);
+        template <typename U> 
+        SmartPtr(SmartPtr<U>&) noexcept;
+        template <typename U> 
+        SmartPtr(SmartPtr<U>&&) noexcept;
+        template <typename U> 
+        SmartPtr(const SmartPtr<U>&, T*) noexcept;
         ~SmartPtr();
 
-        SmartPtr& operator=(SmartPtr);
+        SmartPtr& operator=(SmartPtr) noexcept;
         T& operator*() const { return *ptr_;}
         T* operator->() const { return ptr_;}
         operator bool() const { return ptr_;}
         T * get() const { return ptr_; };
         long use_count() const;
         T * release();
-        void swap(SmartPtr&);
+        void swap(SmartPtr&) noexcept;
 
         // friend std::ostream & operator<< (std::ostream &, SmartPtr<T> &);
 };
+
+template <typename T>
+void swap(SmartPtr<T>& , SmartPtr<T>& ) noexcept;
 
 class shape
 {
@@ -61,5 +65,3 @@ class Box: public shape
         int& count() {return size_;}
         ~Box() { puts("~Box()");}
 };
-
-

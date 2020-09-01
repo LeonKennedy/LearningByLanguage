@@ -4,7 +4,7 @@
 
 template <typename T>
 template <typename U>
-SmartPtr<T>::SmartPtr(SmartPtr<U>& other)
+SmartPtr<T>::SmartPtr(SmartPtr<U>& other) noexcept
 {
     ptr_ = other.ptr_;
     if (ptr_) {
@@ -14,7 +14,8 @@ SmartPtr<T>::SmartPtr(SmartPtr<U>& other)
 }
 
 template <typename T>
-SmartPtr<T>::SmartPtr(SmartPtr&& other)
+template <typename U>
+SmartPtr<T>::SmartPtr(SmartPtr<U>&& other) noexcept
 {
     ptr_ = other.ptr_;
     if (ptr_) {
@@ -25,7 +26,7 @@ SmartPtr<T>::SmartPtr(SmartPtr&& other)
 
 template <typename T>
 template <typename U>
-SmartPtr<T>::SmartPtr(const SmartPtr<U>& other, T* p)
+SmartPtr<T>::SmartPtr(const SmartPtr<U>& other, T* p) noexcept
 {
     ptr_ = p;
     if (ptr_) {
@@ -35,7 +36,7 @@ SmartPtr<T>::SmartPtr(const SmartPtr<U>& other, T* p)
 }
 
 template <typename T>
-SmartPtr<T>& SmartPtr<T>::operator=(SmartPtr other)
+SmartPtr<T>& SmartPtr<T>::operator=(SmartPtr other) noexcept
 {
     other.swap(*this);
     return *this;
@@ -68,7 +69,7 @@ T * SmartPtr<T>::release()
 }
 
 template <typename T>
-void SmartPtr<T>::swap(SmartPtr & s)
+void SmartPtr<T>::swap(SmartPtr & s) noexcept
 {
     std::swap(ptr_, s.ptr_);
     std::swap(shared_cout_, s.shared_cout_);
@@ -79,6 +80,12 @@ void SmartPtr<T>::swap(SmartPtr & s)
 // {
 //     os << p.ptr_->count() << "\tshard_count:" << p.shared_cout_->count() << std::endl; 
 // }
+
+template <typename T>
+void swap(SmartPtr<T>& lhs, SmartPtr<T>& rhs) noexcept
+{
+    lhs.swap(rhs);
+}
 
 template <typename T, typename U>
 SmartPtr<T> dynamic_pointer_cast(const SmartPtr<U>& other)
@@ -100,5 +107,6 @@ int main(int argc, char const *argv[])
     printf("use cout of ptr3 is %ld\n", p4.use_count());
     // p2 = std::move(p);
     std::cout << p2.get() << std::endl;
+    std::make_shared();
     return 0;
 }

@@ -1,5 +1,6 @@
 objs=run.o report.o
-CPP_FLAGS=-std=c++11
+CPP_FLAGS=--std=c++11
+
 run: $(objs)
 	c++ $(objs) -o $@
 	-rm $< 

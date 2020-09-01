@@ -8,7 +8,6 @@
 #include "pointer.cpp"
 #include "ofstream.cpp"
 #include "methodparames.cpp"
-#include "funcpoint.cpp"
 #include "example.hpp"
 
 int main()
@@ -17,10 +16,10 @@ int main()
     // PointerArithmetic();
     // CombineType();
     // plusplus();
-    fileInOut();
+    // fileInOut();
     // PassParamsMethod();
     // show_function_point();
-    // ComplexShow();
+    ComplexShow();
     // TwoSwapExp();
     // exp_static();
     return 0;

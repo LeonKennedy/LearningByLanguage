@@ -114,7 +114,7 @@ void EnumShow()
 
 void ComplexShow()
 {
-    // StringsShow();
+    StringsShow();
     // StructShow();
-    EnumShow();
+    // EnumShow();
 }
