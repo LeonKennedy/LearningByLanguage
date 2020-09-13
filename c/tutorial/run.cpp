@@ -12,10 +12,6 @@
 
 int main()
 {
-    char w[] = "abcd";
-    char *pw = "abcd";
-    std::cout << sizeof(w) << std::endl;
-    std::cout << sizeof(pw) << std::endl;
     ConstPointerShow();
     // PointerArithmetic();
     // CombineType();
