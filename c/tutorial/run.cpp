@@ -12,14 +12,18 @@
 
 int main()
 {
-    // PointerShow();
+    char w[] = "abcd";
+    char *pw = "abcd";
+    std::cout << sizeof(w) << std::endl;
+    std::cout << sizeof(pw) << std::endl;
+    ConstPointerShow();
     // PointerArithmetic();
     // CombineType();
     // plusplus();
     // fileInOut();
     // PassParamsMethod();
     // show_function_point();
-    ComplexShow();
+    // ComplexShow();
     // TwoSwapExp();
     // exp_static();
     return 0;

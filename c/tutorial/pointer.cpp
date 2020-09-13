@@ -6,19 +6,30 @@
  */
 #include <iostream>
 
-void PointerShow()
+typedef char * pstring;
+
+void ConstPointerShow()
 {
     using namespace std;
-    int updates = 6;
-    int * p_updates;
-    p_updates = &updates;
+    const int i =2;
+    constexpr int ii = 3;
+    const int * pi = &i;
+    const int * pii = &ii;
+    pii = &i;
+    const int *const pcii = &ii;
+    // pcii = &i;    //error
     
-    cout << "Val: " << updates << " *point: " << *p_updates << endl;
+    char works[5] = {'a','b','c','e','g'};
+    const char * pchar;
+    pchar = works;
+    const pstring cstr = 0;
+    // cstr = works;  //error
+    const pstring *ps = &cstr;
 
-    cout << "point: " << p_updates << " &point: " << &updates << endl;
-
-    *p_updates = *p_updates + 1;
-    cout << "after *point ++: " << updates << endl;
+    auto lba = *pi;
+    decltype(*pi) fei = i;
+    auto sfji = (i);
+    auto fjdisfa = &i;
 
 }
 
@@ -72,13 +83,6 @@ void CombineType()
 }
 
 
-// void show_array(int[] a)
-// {
-//     using namespace std;
-//     for (int i = 0 ; i < 3; i++)
-//         cout << a[i];
-//     cout << endl;
-// }
 void plusplus()
 {
     using namespace std;
