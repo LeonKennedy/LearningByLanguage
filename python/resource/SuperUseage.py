@@ -60,7 +60,7 @@ class ErrorPerson(Person):
     @Person.name.getter
     def name(self):
         print('Getting name')
-        return super().name
+        return Super().name
 
 
 if __name__ == "__main__":
