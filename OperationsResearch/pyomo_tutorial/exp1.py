@@ -23,7 +23,6 @@ def exp1():
 
     profie  = 270 * x - (100 + 50 + 40*2) * x
             = 40x
-
     """
     model = ConcreteModel()
     model.x = Var(domain=NonNegativeReals)
