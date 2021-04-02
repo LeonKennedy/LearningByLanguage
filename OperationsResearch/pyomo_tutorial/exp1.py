@@ -12,6 +12,7 @@
 from pyomo.environ import ConcreteModel, Var, NonNegativeReals, Objective, maximize, Constraint, SolverFactory
 from .utils import solve
 
+
 def exp1():
     """
      Production Models with Linear Constraints (https://jckantor.github.io/ND-Pyomo-Cookbook/02.01-Production-Models-with-Linear-Constraints.html)
@@ -81,8 +82,6 @@ def exp3():
     print("Profit = ", model.profit(), " per week")
     print("X = ", model.x(), " units per week")
     print("Y = ", model.y(), " units per week")
-
-
 
 
 

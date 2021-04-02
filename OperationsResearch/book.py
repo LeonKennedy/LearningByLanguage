@@ -13,7 +13,7 @@ from pyomo.environ import SolverFactory, ConcreteModel, Var, NonNegativeReals, O
 
 
 def solve(model):
-    SolverFactory('glpk', executable='/usr/local/bin/glpsol').solve(model).write()
+    return SolverFactory('glpk', executable='/usr/local/bin/glpsol').solve(model)
 
 
 def exp1():
@@ -22,21 +22,21 @@ def exp1():
     :return:
     """
     model = ConcreteModel()
-    model.x = Var(domain=NonNegativeReals)
-    model.y = Var(domain=NonNegativeReals)
+    model.x1 = Var(domain=NonNegativeReals)
+    model.x2 = Var(domain=NonNegativeReals)
 
-    model.profit = Objective(expr=model.x * 2 + model.y * 3, sense=maximize)
+    model.profit = Objective(expr=model.x1 * 2 + model.x2 * 3, sense=maximize)
 
-    model.eq = Constraint(expr=model.x + model.y * 2 <= 8)
-    model.origin_A = Constraint(expr=model.x * 4 <= 16)
-    model.origin_B = Constraint(expr=model.y * 2 <= 12)
+    model.eq = Constraint(expr=model.x1 + model.x2 * 2 <= 8)
+    model.origin_A = Constraint(expr=model.x1 * 4 <= 16)
+    model.origin_B = Constraint(expr=model.x2 * 4 <= 12)
 
-    solve(model)
+    result = SolverFactory('glpk', executable='/usr/local/bin/glpsol').solve(model)
 
     print("\nSolution")
     print(f"profit = {model.profit()}")
-    print(f"x = {model.x()}")
-    print(f"y = {model.y()}")
+    print(f"x1 = {model.x1()}")
+    print(f"x2 = {model.x2()}")
 
 
 def exp2():
@@ -48,11 +48,11 @@ def exp2():
 
     model.profit = Objective(expr=model.x * -3 + model.y + model.z, sense=minimize)
 
-    model.eq = Constraint(expr= model.x - 2 * model.y + model.z <= 11)
-    model.origin_A = Constraint(expr= -4 * model.x + model.y + 2 * model.z >= 3)
-    model.origin_B = Constraint(expr= -2 * model.x + model.z == 1)
+    model.eq = Constraint(expr=model.x - 2 * model.y + model.z <= 11)
+    model.origin_A = Constraint(expr=-4 * model.x + model.y + 2 * model.z >= 3)
+    model.origin_B = Constraint(expr=-2 * model.x + model.z == 1)
 
-    solve(model)
+    result = SolverFactory('glpk', executable='/usr/local/bin/glpsol').solve(model)
 
     print("\n==Solution==")
     print(f"profit = {model.profit()}")
