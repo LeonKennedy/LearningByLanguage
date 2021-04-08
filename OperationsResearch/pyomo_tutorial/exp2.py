@@ -52,5 +52,9 @@ def exp1():
         print(c, str.format(c(), c.lslack(), c.uslack(), model.dual[c]))
 
 
+def exp2():
+    model = ConcreteModel()
+
+
 if __name__ == '__main__':
     exp1()
