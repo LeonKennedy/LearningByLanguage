@@ -9,6 +9,7 @@
 @desc: Linear Blending Problem 线性混合问题
 https://jckantor.github.io/ND-Pyomo-Cookbook/02.03-Linear-Blending-Problem.html
 """
+import datetime
 
 from pyomo.environ import ConcreteModel, Var, NonNegativeReals, Objective, maximize, Constraint, Suffix
 from utils import solve

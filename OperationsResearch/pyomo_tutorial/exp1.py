@@ -8,9 +8,9 @@
 @time: 2021/3/29 4:31 下午
 @desc:
 """
-
-from pyomo.environ import ConcreteModel, Var, NonNegativeReals, Objective, maximize, Constraint, SolverFactory
-from .utils import solve
+from pyomo.core.base.set import IndexedSet
+from pyomo.environ import ConcreteModel, Var, NonNegativeReals, Objective, maximize, Constraint, SolverFactory,Param, Set
+from utils import solve
 
 
 def exp1():
@@ -34,7 +34,9 @@ def exp1():
     model.laborA = Constraint(expr=model.x <= 80)
     model.laborB = Constraint(expr=model.x <= 100)
 
-    SolverFactory('glpk', executable='/usr/local/bin/glpsol').solve(model).write()
+    opt = SolverFactory('glpk', executable='/usr/local/bin/glpsol')
+    result = opt.solve(model, tee=False)
+    model.pprint()
 
     print("Profit = ", model.profit(), " per week")
     print("X = ", model.x(), " units per week")
@@ -84,6 +86,5 @@ def exp3():
     print("Y = ", model.y(), " units per week")
 
 
-
 if __name__ == '__main__':
-    exp3()
+    exp1()
