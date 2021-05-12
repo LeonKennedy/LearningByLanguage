@@ -3,3 +3,5 @@ docplex
 gurobipy
 pulp
 pyomo
+scikit-opt
+geatpy
