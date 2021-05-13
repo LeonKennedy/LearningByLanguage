@@ -5,3 +5,4 @@ pulp
 pyomo
 scikit-opt
 geatpy
+numpy
