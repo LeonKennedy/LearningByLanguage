@@ -54,7 +54,7 @@ def solve(M):
 
 
 if __name__ == '__main__':
-    matrix = np.array([7, 2, 9, 2, 9, 0, 9, 0, 11]).reshape(3, 3)
-    # matrix = np.array([8, 2, 4, 2, 6, 6, 6, 4, 4]).reshape(3, 3)
+    # matrix = np.array([7, 2, 9, 2, 9, 0, 9, 0, 11]).reshape(3, 3)
+    matrix = np.array([8, 2, 4, 2, 6, 6, 6, 4, 4, 3, 2, 4]).reshape(3, 4)
     # matrix = np.array([2, 0, 2, 0, 3, 1, 1, 2, 1]).reshape(3, 3)
     main(matrix)

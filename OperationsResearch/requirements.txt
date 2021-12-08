@@ -1,4 +1,3 @@
-cplex
 docplex
 gurobipy
 pulp

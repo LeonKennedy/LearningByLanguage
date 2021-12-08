@@ -15,10 +15,15 @@ from pyomo.environ import ConcreteModel, Set, Var, NonNegativeReals, Objective, 
 model = ConcreteModel()
 model.IDX = Set(initialize=[1, 2, 4])
 model.IDX2 = model.IDX * model.IDX
-print(model.IDX2)
+print("IDX2")
+for i in model.IDX2:
+    print(i)
 
 H_init = {}
 H_init[2] = [1, 3, 5]
 H_init[3] = [2, 4, 6]
 H_init[4] = [3, 5, 7]
 model.H = Set([2, 3, 4], initialize=H_init)
+print('omo set')
+for i in model.H:
+    print(i, [j for j in model.H[i]])
