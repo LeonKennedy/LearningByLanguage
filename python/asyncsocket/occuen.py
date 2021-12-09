@@ -1,16 +1,16 @@
-import socket, select, sys, time,traceback,thread, json
+import socket, select, sys, time, traceback, thread, json
 from collections import deque
 
 
 class Sever:
-    
+
     def __init__(self):
-        #self.startB7Lib()
+        # self.startB7Lib()
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.kst_receiv_msgs = deque()
         self.kst_send_msgs = deque()
         thread.start_new_thread(self.kst_socket_server, ())
-        
+
     def kst_socket_server(self):
         ADDR = ('127.0.0.1', 62133)
         tcpSerSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -22,7 +22,7 @@ class Sever:
         while True:
             tcpCliSock, addr = tcpSerSock.accept()
             print("connect from %s" % str(addr))
-            inputs= [tcpCliSock]
+            inputs = [tcpCliSock]
             output = [tcpCliSock]
             errput = [tcpCliSock]
             try:
@@ -33,7 +33,7 @@ class Sever:
                             data = indata.recv(bufferzise)
                             self.kst_send_msgs.append(data)
                             print("kst need send data is %s" % data)
-                            #send
+                            # send
                             # params = json.load(data)
                             # self.send_msg(**params)
                     except:
@@ -69,9 +69,9 @@ class Sever:
             tcpCliSock.sendall("hello client")
             tcpCliSock.close()
 
-
     def send_msg(self):
         self.kst_receiv_msgs.append("hello client")
+
 
 if __name__ == "__main__":
     # begin_lis()
