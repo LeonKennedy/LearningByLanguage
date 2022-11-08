@@ -50,7 +50,7 @@
   + 序列结构  __len__ __getitem__
   + 切片对象
   + 获取属性__getattr__
--  myweakref   弱引用
+- myweakref   弱引用
 - format      str格式化 高级
 - myzip    大小zip
 - tombola   抽象基类 
@@ -70,3 +70,7 @@
 - MultipleInheritance  多重继承 菱形继承diamond inheritance
 - myconfigparser        config parser 的小例子
 - SuperUsage
+- dlib_usage   dlib库的使用
+  + svm   简单的svm二分类器 
+  + cnn_face_detector 脸部位置识别 
+  + 
